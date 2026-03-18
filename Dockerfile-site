@@ -1,0 +1,80 @@
+# Build stage
+FROM node:20-slim AS builder
+
+# Install build dependencies for native modules (lightningcss, etc.)
+RUN apt-get update && apt-get install -y python3 make g++ unzip curl && \
+    npm install -g bun
+
+WORKDIR /app
+
+# Copy root files for dependency installation (include app-public-components for @/app-public-components alias)
+COPY package.json bun.lock tsconfig.json settings.ts app-public-components.tsx ./
+
+# Copy app package.json to correct location for workspace detection
+COPY apps/app/package.json ./apps/app/
+
+# Install dependencies at root (this hoists dependencies so shared packages can find them)
+# Using --no-frozen-lockfile because we are only building one workspace member
+RUN bun install --no-frozen-lockfile
+
+# Explicitly install linux-x64-gnu version of lightningcss and tailwindcss-oxide
+# This ensures the correct binary is present for the debian-slim environment
+RUN bun add -d lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-gnu
+
+# Copy packages directory (shared dependencies)
+COPY packages ./packages
+
+# Copy scripts and migrations
+COPY scripts ./scripts
+COPY migrations ./migrations
+
+# Copy all app files
+COPY apps ./apps
+
+# Build the Next.js application
+WORKDIR /app/apps/app
+# Добавляем эти строки:
+ARG NEXT_PUBLIC_SOCKET_URL
+ENV NEXT_PUBLIC_SOCKET_URL=$NEXT_PUBLIC_SOCKET_URL
+
+# Debug: вывод переменной во время сборки (ее будет видно в логах Dokploy)
+RUN echo "NEXT_PUBLIC_SOCKET_URL is set to: $NEXT_PUBLIC_SOCKET_URL"
+
+RUN bun run build
+
+# Production stage
+FROM node:20-slim AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Install SQLite and bun
+RUN apt-get update && apt-get install -y sqlite3 unzip curl && \
+    npm install -g bun && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs nextjs
+
+# Copy the entire app directory from builder to preserve structure and node_modules
+COPY --from=builder --chown=nextjs:nodejs /app /app
+
+# Prepare writable directory for D1 local database (if needed)
+RUN mkdir -p /data/.wrangler/state/v3/d1 && \
+    mkdir -p /data/.wrangler/config && \
+    mkdir -p /data/.wrangler/logs && \
+    mkdir -p /data/.wrangler/tmp && \
+    chown -R nextjs:nodejs /data
+
+USER nextjs
+
+EXPOSE 3100
+
+ENV PORT=3100
+ENV HOSTNAME="0.0.0.0"
+
+# Use start:app:migrate from root package.json
+ENTRYPOINT ["bun", "run", "start:app:migrate"]

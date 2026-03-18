@@ -1,0 +1,73 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { withAdminGuard, type AuthenticatedRequestContext } from '@/shared/api-guard'
+import { GoalsRepository } from '@/shared/repositories/goals.repository'
+import { MessagesRepository } from '@/shared/repositories/messages.repository'
+import { parseJson } from '@/shared/repositories/utils'
+import type { AdminTaskDataIn } from '@/shared/types/tasks'
+
+const jsonHeaders = { 'content-type': 'application/json' }
+
+const handlePost = async (
+  context: AuthenticatedRequestContext,
+  taskUuid: string
+) => {
+  const { user } = context
+  try {
+    if (!user.humanAid) {
+      return NextResponse.json(
+        { success: false, error: 'VALIDATION_ERROR', message: 'User humanHaid is required' },
+        { status: 400, headers: jsonHeaders }
+      )
+    }
+
+    const goalsRepository = GoalsRepository.getInstance()
+    const messagesRepository = MessagesRepository.getInstance()
+
+    const task = await goalsRepository.findAdminTaskByUuid(taskUuid)
+    if (!task) {
+      return NextResponse.json(
+        { success: false, error: 'NOT_FOUND', message: 'Task not found' },
+        { status: 404, headers: jsonHeaders }
+      )
+    }
+
+    const dataIn = parseJson<AdminTaskDataIn>((task as any).dataIn, {})
+    if (!dataIn.taskThreadMaid) {
+      return NextResponse.json(
+        { success: false, error: 'INVALID_STATE', message: 'Task thread is missing' },
+        { status: 400, headers: jsonHeaders }
+      )
+    }
+
+    const updated = await messagesRepository.markTaskMessagesViewed(
+      dataIn.taskThreadMaid,
+      user.humanAid
+    )
+
+    return NextResponse.json(
+      { success: true, data: { updated } },
+      { status: 200, headers: jsonHeaders }
+    )
+  } catch (error) {
+    console.error('Failed to mark task messages as viewed', error)
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'INTERNAL_SERVER_ERROR',
+        message: error instanceof Error ? error.message : 'Unexpected error',
+      },
+      { status: 500, headers: jsonHeaders }
+    )
+  }
+}
+
+export async function POST(
+  request: NextRequest,
+  context: { params: Promise<{ uuid: string }> }
+) {
+  const params = await context.params
+  return withAdminGuard((ctx: AuthenticatedRequestContext) => handlePost(ctx, params.uuid))(request, {
+    params: Promise.resolve(params),
+  })
+}
+

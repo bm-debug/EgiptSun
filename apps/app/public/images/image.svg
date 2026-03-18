@@ -1,0 +1,25 @@
+<svg width="386" height="386" viewBox="0 0 386 386" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_4122_64" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="386" height="386">
+<path d="M370 0H16C7.16344 0 0 7.16345 0 16V370C0 378.837 7.16345 386 16 386H370C378.837 386 386 378.837 386 370V16C386 7.16344 378.837 0 370 0Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_4122_64)">
+<g opacity="0.15">
+<path d="M370 0H16C7.16344 0 0 7.16345 0 16V370C0 378.837 7.16345 386 16 386H370C378.837 386 386 378.837 386 370V16C386 7.16344 378.837 0 370 0Z" fill="#CCCCCC"/>
+<path d="M50.578 -0.594543L-338.344 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M98.828 -0.594543L-290.094 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M147.078 -0.594543L-241.844 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M195.328 -0.594543L-193.594 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M243.578 -0.594543L-145.344 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M291.828 -0.594543L-97.0945 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M340.078 -0.594543L-48.8445 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M388.328 -0.594543L-0.594482 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M436.578 -0.594543L47.6555 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M484.826 -0.594543L95.9055 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M533.076 -0.594543L144.156 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M581.326 -0.594543L192.406 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M629.576 -0.594543L240.656 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M677.826 -0.594543L288.906 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+<path d="M726.076 -0.594543L337.156 388.328" stroke="#4D4D4D" stroke-opacity="0.3" stroke-width="5"/>
+</g>
+</g>
+</svg>

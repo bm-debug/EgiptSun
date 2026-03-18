@@ -1,0 +1,14 @@
+#account_id = "ae7b84647320ad09bd48361622510a31"
+name="altrp-site"
+compatibility_date="2025-10-13"
+compatibility_flags=["nodejs_compat"]
+
+pages_build_output_dir = "dist"
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "altrp-site-db"
+#database_id = "ad0cabc4-514e-4d6b-9da9-68e19766a6ec"
+# pl/dev
+database_id = "dcbe904d-65c8-4d4c-90d5-09117db5d392" 

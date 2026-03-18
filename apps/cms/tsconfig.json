@@ -1,0 +1,73 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*",
+        "../../*"
+      ],
+      "@/packages/*": [
+        "../../packages/*"
+      ],
+      "@/db/*": [
+        "../../packages/db/*"
+      ],
+      "@/lib/*": [
+        "../../packages/lib/*",
+        "./src/lib/*"
+      ],
+      "@/hooks/*": [
+        "../../packages/hooks/*",
+        "./src/hooks/*"
+      ],
+      "@/components/*": [
+        "../../packages/components/*",
+        "./src/components/*"
+      ],
+      "@/repositories/*": [
+        "../../packages/repositories/*",
+        "./src/repositories/*"
+      ],
+      "@/types/*": [
+        "../../packages/types/*",
+        "./src/types/*"
+      ],
+      "@/settings": [
+        "../../settings.ts"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../packages/types/page-editor.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

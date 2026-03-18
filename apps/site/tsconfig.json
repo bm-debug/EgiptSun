@@ -1,0 +1,76 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*",
+        "../../*"
+      ],
+      "@/packages/*": [
+        "../../packages/*"
+      ],
+      "@/components/*": [
+        "./src/components/*",
+        "../../packages/components/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*",
+        "../../packages/lib/*"
+      ],
+      "@/repositories/*": [
+        "./repositories/*",
+        "../../packages/repositories/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*",
+        "../../packages/hooks/*"
+      ],
+      "@/shared/*": [
+        "./src/shared/*",
+        "./functions/_shared/*"
+      ]
+    },
+    "types": [
+      "@cloudflare/workers-types",
+      "bun-types"
+    ]
+  },
+  "include": [
+    "dist/types/**/*.d.ts",
+    "dist/types/**/*.ts",
+    "functions/**/*.d.ts",
+    "functions/**/*.ts",
+    "next-env.d.ts",
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/**/*.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
+}

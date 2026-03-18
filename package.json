@@ -1,0 +1,71 @@
+{
+  "name": "altrp-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "bun": ">=1.1.0"
+  },
+  "scripts": {
+    "dev:site": "bun run --filter=altrp-site dev",
+    "dev:wrangler:site": "bun run --filter=altrp-site dev:all",
+    "dev:wrangler:migrate:site": "bun run db:site:migrate:local && bun run --filter=altrp-site dev:all",
+    "build:site": "bun run --filter=altrp-site build:static",
+    "start:site": "bun run --filter=altrp-site start",
+    "start:site:migrate": "bun run db:site:migrate && bun run --filter=altrp-site start",
+    "dev:socket": "bun run --filter=altrp-socket dev",
+    "build:socket": "bun run --filter=altrp-socket build",
+    "start:socket": "bun run --filter=altrp-socket start",
+    "dev:app": "bun run --filter=altrp-app dev",
+    "deploy:app": "bun run --filter=altrp-app deploy",
+    "build:app": "bun run --filter=altrp-app build",
+    "start:app": "bun run --filter=altrp-app start",
+    "start:app:migrate": "bun run db:app:migrate && bun run --filter=altrp-app start",
+    "dev": "concurrently \"bun run dev:socket\" \"bun run dev:site\"",
+    "build": "bun run build:site && bun run build:cms && bun run build:app",
+    "quick-test": "bun run --filter=altrp-cms test:e2e:quick-public",
+    "test:integration": "bun run --filter=altrp-cms test:integration",
+    "test:e2e": "bun run --filter=altrp-cms test:e2e",
+    "type-check": "bun run --filter=altrp-site type-check && bun run --filter=altrp-app type-check",
+    "type-check:site": "bun run --filter=altrp-site type-check",
+    "db:cms:push": "bun run --filter=altrp-cms db:push",
+    "db:cms:reset": "bun run --filter=altrp-cms db:reset",
+    "db:app:push": "bun run --filter=altrp-app db:push",
+    "db:app:generate": "bun run --filter=altrp-app db:generate",
+    "db:export:app": "bun scripts/export-sqlite-schema.js data/app.database.sqlite migrations/site/app-schema.sql",
+    "db:export:cms": "bun scripts/export-sqlite-schema.js data/cms.database.sqlite migrations/site/cms-schema.sql",
+    "db:app:reset": "node scripts/reset-app-postgres.mjs",
+    "db:app:reset-migrate": "node scripts/reset-app-postgres.mjs && node scripts/migrate-app.mjs",
+    "db:app:migrate": "node scripts/migrate-app.mjs",
+    "cms:up": "node scripts/cms-sqlite-up.js",
+    "dev:kill": "taskkill /F /IM node.exe",
+    "import:taxonomy": "bun scripts/import-taxonomy.ts",
+    "d1:migrate:taxonomy-title-json:local": "bun run --filter=altrp-site d1:migrate:taxonomy-title-json:local",
+    "d1:migrate:taxonomy-title-json:remote": "bun run --filter=altrp-site d1:migrate:taxonomy-title-json:remote",
+    "migrate:taxonomy-title-json:local": "bun run --filter=altrp-site d1:migrate:taxonomy-title-json:local",
+    "migrate:taxonomy-title-json:remote": "bun run --filter=altrp-site d1:migrate:taxonomy-title-json:remote",
+    "generate:keys:vapid": "npx  web-push generate-vapid-keys",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@eslint/js": "^9.36.0",
+    "@types/qs": "^6.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "concurrently": "^8.2.2",
+    "husky": "^9.1.7"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "^1.11.0",
+    "baseline-browser-mapping": "^2.9.7",
+    "date-fns": "^4.1.0",
+    "marked": "^17.0.1",
+    "next": "^16.1.3",
+    "pg": "^8.17.2",
+    "react-day-picker": "^9.13.2",
+    "wrangler": "4"
+  }
+}

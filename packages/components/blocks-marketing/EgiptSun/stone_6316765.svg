@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512" height="512">
+<g id="XMLID_56_">
+	
+		<ellipse id="XMLID_57_" transform="matrix(0.1741 -0.9847 0.9847 0.1741 -164.4126 255.7271)" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" cx="70.245" cy="225.878" rx="40.163" ry="40.163"/>
+	
+		<polyline id="XMLID_58_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="&#10;&#9;&#9;160.612,266.041 250.979,266.041 250.979,225.878 160.612,225.878 &#9;"/>
+	
+		<path id="XMLID_59_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M381.51,215.837l-60.246-30.122H150.571c-22.181,0-40.163,17.982-40.163,40.163c0,22.182,17.982,40.163,40.163,40.163&#10;&#9;&#9;c16.773,0,313.169,0,331.347,0v-50.204H381.51z"/>
+	
+		<path id="XMLID_60_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M10,286.161c0,11.116,9.008,20.125,20.12,20.125h451.76c11.112,0,20.12-9.008,20.12-20.12c0-11.117-9.008-20.125-20.12-20.125&#10;&#9;&#9;H30.12C19.008,266.041,10,275.049,10,286.161z"/>
+	
+		<path id="XMLID_61_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M441.918,346.449h-40.326c-11.046,0-20-8.955-20-20v-20.163h80.326v20.163C461.918,337.494,452.964,346.449,441.918,346.449z"/>
+	
+		<path id="XMLID_62_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M110.408,346.449H70.081c-11.046,0-20-8.955-20-20v-20.163h80.327v20.163C130.408,337.494,121.454,346.449,110.408,346.449z"/>
+	
+		<path id="XMLID_63_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M90.245,486.938c-11.091,0-20.082-8.991-20.082-20.082V346.449h40.164v120.407C110.327,477.947,101.336,486.938,90.245,486.938z"/>
+	
+		<path id="XMLID_65_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M421.756,486.938c-11.091,0-20.082-8.991-20.082-20.082V346.449h40.163v120.407C441.837,477.947,432.846,486.938,421.756,486.938z"/>
+	
+		<path id="XMLID_67_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M200.775,165.633c0,11.091-13.486,20.081-30.123,20.081c-16.636,0-30.122-8.99-30.122-20.081s13.486-20.082,30.122-20.082&#10;&#9;&#9;C187.289,145.551,200.775,154.542,200.775,165.633z"/>
+	
+		<path id="XMLID_68_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M261.02,165.633c0,11.091-13.486,20.081-30.123,20.081c-16.636,0-30.122-8.99-30.122-20.081s13.486-20.082,30.122-20.082&#10;&#9;&#9;C247.534,145.551,261.02,154.542,261.02,165.633z"/>
+	
+		<path id="XMLID_72_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M321.265,165.633c0,11.091-13.486,20.081-30.122,20.081c-16.636,0-30.122-8.99-30.122-20.081s13.486-20.082,30.122-20.082&#10;&#9;&#9;C307.779,145.551,321.265,154.542,321.265,165.633z"/>
+	
+		<path id="XMLID_73_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M291.143,105.388c0-20.081-10.04-20.081-10.04-40.163c0-20.082,10.04-20.082,10.04-40.163"/>
+	
+		<path id="XMLID_76_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M230.898,105.388c0-20.081-10.041-20.081-10.041-40.163c0-20.082,10.041-20.082,10.041-40.163"/>
+	
+		<path id="XMLID_77_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M170.653,105.388c0-20.081-10.04-20.081-10.04-40.163c0-20.082,10.04-20.082,10.04-40.163"/>
+	
+		<line id="XMLID_78_" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" x1="291.143" y1="266.041" x2="291.143" y2="185.714"/>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</svg>

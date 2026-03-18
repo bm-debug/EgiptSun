@@ -1,0 +1,827 @@
+{
+  "auth": {
+    "accessGranted": "تم منح الوصول إلى:",
+    "authenticationFailed": "فشل في المصادقة",
+    "networkError": "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
+    "passwordProtected": "هذا المحتوى محمي بكلمة مرور. يرجى إدخال كلمة المرور للمتابعة.",
+    "protectedContent": "محتوى محمي"
+  },
+  "blog": {
+    "author": "المؤلف",
+    "backToBlog": "العودة إلى المدونة",
+    "blog": "المدونة",
+    "description": "أحدث المقالات والتحديثات",
+    "noPostsFound": "لم يتم العثور على مقالات",
+    "publishedOn": "نُشر في",
+    "readMore": "اقرأ المزيد",
+    "tags": "العلامات",
+    "title": "المدونة"
+  },
+  "breadcrumb": {
+    "buildingApplication": "بناء تطبيقك",
+    "dataFetching": "جلب البيانات"
+  },
+  "categories": {
+    "articleCount": "مقال",
+    "articlesCount": "مقالات",
+    "categorizedIn": "المقالات في الفئة",
+    "description": "اكتشف محتوانا المنظم حسب الفئات",
+    "noCategoriesFound": "لم يتم العثور على فئات",
+    "noPostsInCategory": "لا توجد مقالات في هذه الفئة بعد",
+    "title": "الفئات"
+  },
+  "category": {
+    "no_posts_found_in_this_category_yet": "لا توجد مقالات في هذه الفئة بعد",
+    "posts_in": "المقالات في"
+  },
+  "common": {
+    "back": "رجوع",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "dark": "داكن",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "enterPassword": "أدخل كلمة المرور",
+    "forward": "إلى الأمام",
+    "goTo": "انتقل إلى",
+    "indexingContent": "جاري فهرسة المحتوى...",
+    "light": "فاتح",
+    "loading": "جاري التحميل...",
+    "next": "التالي",
+    "open": "فتح",
+    "password": "كلمة المرور",
+    "previous": "السابق",
+    "relevance": "الصلة",
+    "save": "حفظ",
+    "search": "بحث",
+    "searchPlaceholder": "اكتب للبحث...",
+    "sectionNavigation": "تنقل الأقسام",
+    "sectionOf": "القسم {current} من {total}",
+    "tableOfContents": "جدول المحتويات",
+    "theme": "المظهر",
+    "unlockContent": "إلغاء قفل المحتوى",
+    "verifying": "جاري التحقق..."
+  },
+  "components": {
+    "accordion": {
+      "description": "مجموعة من العناوين التفاعلية المكدسة عمودياً والتي تكشف عن قسم محتوى.",
+      "title": "أكورديون"
+    },
+    "alert": {
+      "description": "مكونات التنبيه لعرض معلومات مهمة للمستخدمين بأنماط ومتغيرات مختلفة.",
+      "title": "تنبيه"
+    },
+    "alertDialog": {
+      "description": "حوارات نمطية لتأكيد الإجراء وعرض معلومات مهمة بأنماط ومتغيرات مختلفة.",
+      "title": "حوار التنبيه"
+    },
+    "avatar": {
+      "description": "عنصر صورة مع بديل لتمثيل المستخدم بأنماط وتكوينات مختلفة.",
+      "title": "مكونات الصورة الرمزية"
+    },
+    "badge": {
+      "description": "واصفات حالة صغيرة لعناصر واجهة المستخدم بأنماط وتكوينات مختلفة.",
+      "title": "مكونات الشارة"
+    },
+    "breadcrumb": {
+      "description": "مكونات التنقل التي توضح موقع الصفحة الحالية داخل التسلسل الهرمي للموقع.",
+      "title": "مكونات مسار التنقل"
+    },
+    "button": {
+      "description": "عناصر تفاعلية لإجراءات المستخدم بأنماط وأحجام وحالات مختلفة.",
+      "title": "مكونات الزر"
+    },
+    "card": {
+      "description": "حاويات مرنة لتجميع المحتوى ذي الصلة والإجراءات بتخطيطات وأنماط مختلفة.",
+      "title": "مكونات البطاقة"
+    },
+    "carousel": {
+      "description": "دوارات تفاعلية لعرض المحتوى بتنسيق منزلق مع خيارات تنقل مختلفة.",
+      "title": "مكونات الدوارة"
+    },
+    "checkbox": {
+      "description": "خانات اختيار تفاعلية للنماذج والاختيارات وإدخال المستخدم بأنماط وحالات مختلفة.",
+      "title": "مكونات خانة الاختيار"
+    },
+    "collapsible": {
+      "description": "مناطق محتوى قابلة للتوسيع والطي مع رسوم متحركة سلسة وأنماط مشغل مختلفة.",
+      "title": "مكونات قابلة للطي"
+    },
+    "count": "مكونات",
+    "dropdown": {
+      "description": "قوائم سياقية وقوائم منسدلة بأنواع محتوى وتفاعلات وخيارات تنسيق مختلفة.",
+      "title": "مكونات القائمة المنسدلة"
+    },
+    "howToUse": {
+      "description": "اختر فئة مكون أعلاه لعرض جميع الخيارات المتاحة وأمثلة الكود والعروض التفاعلية. يتضمن كل مكون توثيقاً مفصلاً وأمثلة استخدام.",
+      "title": "كيفية الاستخدام"
+    },
+    "layout": {
+      "description": "مكونات التخطيط وأمثلة الكود ومكونات المرافق للعروض التوضيحية.",
+      "title": "التخطيط والمرافق"
+    },
+    "more": "المزيد",
+    "title": "مكتبة مكونات واجهة المستخدم",
+    "variants": "المتغيرات:"
+  },
+  "home": {
+    "all50ShadcnUiComponentsAreReadyToUse": "جميع مكونات Shadcn UI الـ 50 جاهزة للاستخدام",
+    "aModernGitAsCmsPoweredWebsite": "موقع حديث مدعوم بـ Git-as-CMS",
+    "articlesWithPopularTags": "مقالات بعلامات شائعة",
+    "availableComponents": "المكونات المتاحة",
+    "categories": "الفئات",
+    "currentLocale": "اللغة الحالية",
+    "exploreOurContentOrganizedByTopics": "استكشف محتوانا المنظم حسب المواضيع",
+    "latestPosts": "أحدث المنشورات",
+    "meetTheTalentedWritersBehindOurContent": "تعرف على الكتاب الموهوبين وراء محتوانا",
+    "ourAuthors": "كتابنا",
+    "postsWithDemoAndHelloTags": "منشورات بعلامات demo و hello",
+    "readOurLatestArticlesAndUpdates": "اقرأ أحدث مقالاتنا وتحديثاتنا",
+    "welcomeToaltrp": "مرحبًا بك في altrp"
+  },
+  "navigation": {
+    "about": "حول",
+    "admin": "الإدارة",
+    "platform": "المنصة",
+    "all_rights_reserved": "جميع الحقوق محفوظة",
+    "analytics": "التحليلات",
+    "blog": "المدونة",
+    "categories": "الفئات",
+    "contact": "اتصل بنا",
+    "demo": "عرض توضيحي",
+    "discover_amazing_content_organized_by_tags_and_categories": "اكتشف محتوى رائع منظم بواسطة العلامات والفئات",
+    "group1SectionA": "المجموعة 1 - القسم أ",
+    "group2SectionD": "المجموعة 2 - القسم د",
+    "home": "الرئيسية",
+    "navigation": "التنقل",
+    "overview": "نظرة عامة",
+    "page": "صفحة",
+    "privacy_policy": "سياسة الخصوصية",
+    "projects": "المشاريع",
+    "search": "بحث",
+    "settings": "الإعدادات",
+    "tableOfContents": "جدول المحتويات",
+    "tags": "العلامات",
+    "terms_of_service": "شروط الخدمة"
+  },
+  "passwordGroups": {
+    "allOtherSections": "جميع الأقسام الأخرى",
+    "coversAllSections": "هذه المجموعة تغطي جميع الأقسام غير المعينة صراحة لمجموعات أخرى",
+    "coversSpecifiedSections": "هذه المجموعة تغطي الأقسام المحددة فقط",
+    "description": "يتم تعيين كل معرف قسم تلقائياً إلى مجموعة كلمات مرور بناءً على التكوين أدناه.",
+    "password": "كلمة المرور:",
+    "section": "قسم",
+    "sections": "الأقسام:",
+    "title": "تكوين مجموعات كلمات المرور"
+  },
+  "project": {
+    "description": "مولد المقترحات التجارية",
+    "name": "altrp"
+  },
+  "search": {
+    "noHeadings": "لا توجد عناوين",
+    "nothingFound": "لم يتم العثور على شيء",
+    "popupSearch": "بحث في النافذة",
+    "searchInContent": "البحث في المحتوى",
+    "searchResults": "نتائج البحث",
+    "tryDifferentKeywords": "جرب كلمات مفتاحية مختلفة"
+  },
+  "tags": {
+    "articleCount": "مقال",
+    "articles_tagged_with": "المقالات المميزة بـ",
+    "articlesCount": "مقالات",
+    "description": "اكتشف محتوانا المنظم حسب العلامات والكلمات المفتاحية",
+    "discover_our_content_organized_by_tags_and_keywords": "اكتشف محتوانا المنظم حسب العلامات والكلمات المفتاحية",
+    "noPostsInTag": "لا توجد مقالات في هذه العلامة بعد",
+    "noTagsFound": "لم يتم العثور على علامات",
+    "tagged_with_this_keyword": "المقالات المميزة بهذه الكلمة المفتاحية",
+    "taggedWith": "المقالات المميزة بـ",
+    "tags": "العلامات",
+    "title": "العلامات"
+  },
+  "tariff": {
+    "popular": "شائع"
+  },
+  "olap": {
+    "contractors": {
+      "contacts": "جهات الاتصال",
+      "deals": "الصفقات"
+    },
+    "products": {
+      "campaigns": "الحملات",
+      "goals": "الأهداف",
+      "reports": "التقارير",
+      "assets": "الملفات",
+      "wallets": "المحفظة",
+      "wallet_transactions": "حركة الأموال"
+    }
+  },
+  "sidebar": {
+    "platform": "المنصة",
+    "categories": {
+      "Dashboard": "لوحة التحكم",
+      "Contacts": "جهات الاتصال",
+      "Sales": "المبيعات",
+      "Finance": "المالية",
+      "Logistics": "اللوجستيات",
+      "Projects": "المشاريع",
+      "Staff": "الموظفون والموارد البشرية",
+      "Education": "LMS",
+      "Marketing": "التسويق",
+      "Content": "المحتوى والأصول",
+      "Chats": "الاتصالات",
+      "Specific": "وحدات محددة",
+      "Admin": "الإدارة",
+      "System": "النظام",
+      "Logs": "السجلات"
+    },
+    "menuItems": {
+      "Settings": "الإعدادات",
+      "Seed": "البذور",
+      "SqlEditor": "محرر SQL",
+      "DashboardScreen": "لوحة التحكم",
+      "MyTasks": "مهامي"
+    },
+    "collectionDisplayNames": {
+      "humans": "أشخاص",
+      "contractors": "شركات",
+      "locations": "مواقع",
+      "segments": "شرائح",
+      "deals": "صفقات",
+      "products": "منتجات",
+      "product_variants": "متغيرات المنتج",
+      "finances": "معاملات",
+      "wallets": "محافظ",
+      "wallet_transactions": "حركة الأموال",
+      "bases": "مستودعات",
+      "base_moves": "شحنات",
+      "base_move_routes": "طرق",
+      "goals": "مهام",
+      "votes": "تصويتات",
+      "employees": "موظفون",
+      "echelons": "هيكل المنظمة",
+      "echelon_employees": "مستوى",
+      "employee_timesheets": "جداول الحضور",
+      "employee_leaves": "الإجازات والغياب",
+      "qualifications": "المؤهلات",
+      "universities": "التعليم",
+      "outreaches": "حملات",
+      "outreach_referrals": "الإحالات",
+      "yields": "التلعيب",
+      "assets": "أصول",
+      "texts": "نصوص",
+      "media": "وسائط",
+      "message_threads": "محادثات",
+      "messages": "رسائل",
+      "notices": "إشعارات",
+      "zoos": "حيوانات",
+      "users": "مستخدمون",
+      "roles": "الأدوار والصلاحيات",
+      "permissions": "صلاحيات",
+      "identities": "التحكم في الوصول",
+      "user_sessions": "الجلسات النشطة",
+      "user_bans": "قائمة الحظر",
+      "user_verifications": "التحققات",
+      "expanses": "مساحات العمل",
+      "settings": "الإعدادات",
+      "taxonomy": "التصنيف",
+      "keys": "مفاتيح API",
+      "relations": "علاقات",
+      "journals": "سجل النشاط",
+      "journal_connections": "رسم بياني للاتصالات",
+      "journal_system": "تدقيق النظام",
+      "journal_generations": "سجل AI"
+    },
+    "developer": {
+      "platform": "بوابة المطور",
+      "menuItems": {
+        "Dashboard": "لوحة التحكم",
+        "Games": "ألعابي",
+        "Campaigns": "جميع الحملات",
+        "Reports": "جميع التقارير",
+        "Billing": "الفواتير",
+        "Settings": "إعدادات الاستوديو",
+        "Support": "الدعم"
+      }
+    },
+    "tester": {
+      "platform": "بوابة المختبر",
+      "menuItems": {
+        "Dashboard": "لوحة التحكم",
+        "Tasks": "المهام",
+        "Wallet": "المحفظة",
+        "Profile": "الملف الشخصي",
+        "Support": "الدعم"
+      }
+    },
+    "administrator": {
+      "platform": "بوابة المسؤول",
+      "menuItems": {
+        "Dashboard": "لوحة التحكم",
+        "Games": "الألعاب",
+        "Campaigns": "الحملات",
+        "Reports": "التقارير",
+        "Users": "المستخدمون",
+        "Directories": "الدلائل",
+        "Settings": "الإعدادات",
+        "Support": "الدعم"
+      }
+    }
+  },
+  "sqlEditor": {
+    "title": "محرر SQL",
+    "description": "تنفيذ استعلامات SQL على قاعدة البيانات. مسموح فقط بـ SELECT و INSERT و UPDATE و DELETE.",
+    "error": "خطأ",
+    "pleaseEnterQuery": "يرجى إدخال استعلام SQL",
+    "failedToExecute": "فشل تنفيذ الاستعلام",
+    "replaceNullWithNull": "استبدل 'NULL' بـ NULL في الاستعلام",
+    "query": "الاستعلام",
+    "queryHint": "أدخل استعلام SQL. اضغط Ctrl+Enter (Cmd+Enter على Mac) للتنفيذ.",
+    "jsonbHint": "لأعمدة jsonb (مثل taxonomy.data_in): استخدم NULL بدون علامات اقتباس أو JSON صالح مع ::jsonb.",
+    "exampleInsertTaxonomy": "مثال: INSERT في taxonomy",
+    "clear": "مسح",
+    "execute": "تنفيذ",
+    "executing": "جاري التنفيذ...",
+    "placeholder": "SELECT * FROM users LIMIT 10;",
+    "results": "النتائج",
+    "success": "نجاح",
+    "rowReturned": "{n} صف تم إرجاعه",
+    "rowsReturned": "{n} صفوف تم إرجاعها",
+    "rowInserted": "{n} صف تم إدراجه",
+    "rowsInserted": "{n} صفوف تم إدراجها",
+    "rowUpdated": "{n} صف تم تحديثه",
+    "rowsUpdated": "{n} صفوف تم تحديثها",
+    "rowDeleted": "{n} صف تم حذفه",
+    "rowsDeleted": "{n} صفوف تم حذفها",
+    "inTable": "في الجدول {t}",
+    "fromTable": "من الجدول {t}",
+    "queryExecutedSuccessfully": "تم تنفيذ الاستعلام بنجاح.",
+    "noRowsReturned": "تم تنفيذ الاستعلام بنجاح لكن لم يتم إرجاع أي صفوف.",
+    "enterQueryAndExecute": "أدخل استعلام SQL أعلاه وانقر تنفيذ لرؤية النتائج."
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "description": "مرحباً بك في لوحة الإدارة. نظرة عامة على النظام.",
+    "adminPanel": "لوحة الإدارة",
+    "totalUsers": "إجمالي المستخدمين",
+    "registeredUsers": "المستخدمون المسجلون",
+    "collections": "المجموعات",
+    "availableCollections": "المجموعات المتاحة",
+    "deals": "الصفقات",
+    "activeDeals": "الصفقات النشطة",
+    "documents": "المستندات",
+    "totalDocuments": "إجمالي المستندات",
+    "quickActions": "إجراءات سريعة",
+    "commonTasks": "مهام إدارية شائعة",
+    "manageUsers": "إدارة المستخدمين",
+    "viewEditUsers": "عرض وتعديل المستخدمين",
+    "manageDeals": "إدارة الصفقات",
+    "viewEditDeals": "عرض وتعديل الصفقات",
+    "manageProducts": "إدارة المنتجات",
+    "viewEditProducts": "عرض وتعديل المنتجات"
+  },
+  "teamSwitcher": {
+    "teamsLabel": "الأدوار"
+  },
+  "expanseSelector": {
+    "label": "النطاق",
+    "general": "عام"
+  },
+  "navUser": {
+    "notifications": "الإشعارات",
+    "english": "English",
+    "russian": "Русский",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "logOut": "تسجيل الخروج"
+  },
+  "admin": {
+    "deals": "الصفقات",
+    "tasks": "المهام",
+    "finances": "المالية",
+    "notifications": "الإشعارات",
+    "unreadNotificationsCount": "لديك {count} إشعارات غير مقروءة",
+    "allNotificationsRead": "تم قراءة جميع الإشعارات",
+    "noNotifications": "لا توجد إشعارات",
+    "notification": "إشعار"
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "description": "أدخل بياناتك للوصول إلى لوحة الإدارة",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "emailPlaceholder": "admin@example.com",
+    "passwordPlaceholder": "••••••••",
+    "loginButton": "تسجيل الدخول",
+    "loggingIn": "جاري تسجيل الدخول...",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "resetTitle": "استعادة كلمة المرور",
+    "resetDescription": "أدخل بريدك وسنرسل لك رابط الاستعادة",
+    "sendResetLink": "إرسال رابط الاستعادة",
+    "sendingResetLink": "جاري الإرسال...",
+    "backToLogin": "العودة لتسجيل الدخول",
+    "resetEmailSent": "إذا وُجد حساب لهذا البريد، تم إرسال رابط الاستعادة.",
+    "errors": {
+      "apiNotFound": "واجهة API غير موجودة.",
+      "serverError": "خطأ في الخادم. حاول لاحقاً.",
+      "invalidCredentials": "بيانات دخول غير صحيحة",
+      "emailRequired": "البريد مطلوب",
+      "loginFailed": "فشل تسجيل الدخول"
+    }
+  },
+  "passwordReset": {
+    "title": "استعادة كلمة المرور",
+    "description": "تعيين كلمة مرور جديدة",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "submit": "حفظ",
+    "submitting": "جاري الحفظ...",
+    "backToLogin": "العودة لتسجيل الدخول",
+    "errors": {
+      "invalidLink": "رابط غير صالح",
+      "required": "جميع الحقول مطلوبة",
+      "mismatch": "كلمات المرور غير متطابقة",
+      "weak": "كلمة المرور 8 أحرف على الأقل",
+      "failed": "فشل استعادة كلمة المرور"
+    },
+    "success": {
+      "title": "تم",
+      "message": "تم تحديث كلمة المرور. يمكنك تسجيل الدخول الآن."
+    }
+  },
+  "dataTable": {
+    "collections": {
+      "texts": "النصوص",
+      "taxonomy": "التصنيف",
+      "products": "ألعابي",
+      "goals": "الحملات",
+      "deals": "الطلبات",
+      "deals_products": "طلبات المنتجات",
+      "base_moves": "المركبات",
+      "contractors": "المقاولون",
+      "roles": "الأدوار",
+      "users": "المستخدمون",
+      "media": "الوسائط",
+      "relations": "العلاقات",
+      "locations": "المواقع",
+      "humans": "الأشخاص",
+      "employees": "الموظفون",
+      "user_roles": "أدوار المستخدمين"
+    },
+    "noFields": "لا توجد حقول",
+    "selectAll": "تحديد الكل",
+    "selectRow": "تحديد الصف",
+    "fields": {
+      "users": {
+        "human_aid": "الشخص",
+        "email": "البريد الإلكتروني",
+        "password_hash": "كلمة المرور",
+        "is_active": "نشط",
+        "last_login_at": "آخر تسجيل دخول",
+        "email_verified_at": "تم التحقق من البريد",
+        "reset_password_token": "رمز إعادة تعيين كلمة المرور",
+        "reset_password_expiration": "انتهاء صلاحية الرمز",
+        "login_attempts": "محاولات تسجيل الدخول",
+        "lock_until": "مقفل حتى",
+        "created_at": "تم الإنشاء",
+        "updated_at": "تم التحديث"
+      }
+    },
+    "roles": {
+      "selected": "محدد: {n}",
+      "selectRoles": "اختر الأدوار...",
+      "searchRoles": "بحث الأدوار...",
+      "noRolesFound": "لم يتم العثور على أدوار"
+    },
+    "toggleSidebar": "إظهار/إخفاء الشريط",
+    "adminPanel": "لوحة الإدارة",
+    "search": "بحث...",
+    "customizeColumns": "تخصيص الأعمدة",
+    "columns": "الأعمدة",
+    "add": "إضافة",
+    "noDataFound": "لا توجد بيانات في {collection}.",
+    "selectedRecords": "{count} محدد · {total} إجمالي السجلات",
+    "rowsPerPage": "صفوف في الصفحة",
+    "page": "صفحة {page} من {total}",
+    "addRecord": {
+      "title": "إضافة سجل جديد إلى {collection}",
+      "description": "املأ الحقول أدناه."
+    },
+    "form": {
+      "select": "اختر {field}",
+      "enter": "أدخل {field}",
+      "confirm": "أكد {field}",
+      "confirmNew": "أكد {field} الجديد",
+      "enterNew": "أدخل {field} الجديد",
+      "loading": "جاري التحميل...",
+      "selectPlaceholder": "اختر...",
+      "selected": "محدد",
+      "noResults": "لم يتم العثور على نتائج.",
+      "noOptionsAvailable": "لا توجد خيارات متاحة",
+      "cancel": "إلغاء",
+      "create": "إنشاء",
+      "save": "حفظ",
+      "clear": "مسح",
+      "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+      "passwordLeaveEmpty": "اتركه فارغاً للاحتفاظ بالقيمة الحالية",
+      "uploadSuccess": "تم رفع الملف. انقر «إنشاء» للإضافة.",
+      "uploadImage": "اختر ملفاً",
+      "uploading": "جاري الرفع...",
+      "removeOption": "إزالة {label}"
+    },
+    "actions": {
+      "view": "عرض",
+      "edit": "تعديل",
+      "duplicate": "نسخ",
+      "manageRoleSchema": "إدارة مخطط الدور"
+    },
+    "delete": {
+      "selected": "حذف المحدد",
+      "delete": "حذف",
+      "deleteRecord": {
+        "title": "حذف السجل؟",
+        "description": "لا يمكن التراجع عن هذا الإجراء. أنت على وشك حذف سجل واحد من \"{collection}\"."
+      },
+      "deleteSelected": {
+        "title": "حذف السجلات المحددة؟",
+        "description": "لا يمكن التراجع عن هذا الإجراء. أنت على وشك حذف {count} سجلات من \"{collection}\".",
+        "deleting": "جاري الحذف...",
+        "deleteAll": "حذف الكل"
+      }
+    },
+    "statusFilter": {
+      "filter": "فلتر الحالة",
+      "filterBy": "تصفية حسب الحالة",
+      "clear": "مسح الفلتر",
+      "selected": "محدد",
+      "selectedPlural": "محدد"
+    },
+    "cityFilter": {
+      "filter": "فلتر المدينة",
+      "filterBy": "تصفية حسب المدينة",
+      "clear": "مسح الفلتر",
+      "selected": "محدد",
+      "selectedPlural": "محدد"
+    },
+    "filterSettings": "إعدادات الفلاتر",
+    "filters": "الفلاتر",
+    "showColumnFilters": "إظهار فلاتر الأعمدة",
+    "dateFilter": {
+      "filter": "فلتر التاريخ",
+      "filterBy": "تصفية حسب",
+      "created": "تم الإنشاء",
+      "updated": "تم التحديث",
+      "today": "اليوم",
+      "yesterday": "أمس",
+      "last7days": "آخر 7 أيام",
+      "last30days": "آخر 30 يوماً",
+      "last90days": "آخر 90 يوماً",
+      "thisMonth": "هذا الشهر",
+      "lastMonth": "الشهر الماضي",
+      "thisYear": "هذا العام",
+      "lastYear": "العام الماضي",
+      "clear": "مسح الفلتر",
+      "selectDate": "اختر التاريخ",
+      "dateRange": "نطاق التاريخ",
+      "from": "من",
+      "to": "إلى",
+      "apply": "تطبيق"
+    },
+    "editRecord": {
+      "title": "تعديل السجل في {collection}",
+      "description": "غيّر الحقول أدناه. الحقول المُنشأة تلقائياً غير قابلة للتعديل ومخفية."
+    },
+    "createRecord": {
+      "title": "إنشاء سجل في {collection}",
+      "description": "املأ الحقول أدناه. الحقول المُنشأة تلقائياً غير قابلة للتعديل ومخفية."
+    },
+    "loading": "جاري تحميل {collection}...",
+    "dataInFields": "إضافي",
+    "showFilters": "إظهار الفلاتر",
+    "cardView": "عرض البطاقات",
+    "cardViewMobile": "عرض البطاقات (الجوال)",
+    "cardViewDesktop": "عرض البطاقات (سطح المكتب)",
+    "cardsPerRow": "بطاقات في الصف",
+    "searchHint": "Enter للإضافة، \"عبارة\" للبحث الدقيق، AND/OR للمشغلات",
+    "editMode": "وضع التحرير",
+    "save": "حفظ",
+    "export": "تصدير",
+    "import": "استيراد",
+    "configureTable": "الإعدادات",
+    "exportData": "تصدير البيانات",
+    "importData": "استيراد البيانات",
+    "exportedRecords": "تم تصدير {count} سجلات بتنسيق {format}",
+    "importDescription": "قم بتحميل ملف أو لصق البيانات للاستيراد إلى مجموعة {collection}",
+    "fileFormat": "تنسيق الملف",
+    "importMode": "وضع الاستيراد",
+    "loadFile": "تحميل ملف",
+    "pasteText": "لصق نص",
+    "file": "ملف",
+    "pasteData": "لصق البيانات",
+    "importing": "جاري الاستيراد...",
+    "importedRecords": "تم الاستيراد: {count} سجلات",
+    "importButton": "استيراد",
+    "close": "إغلاق",
+    "selectedFile": "الملف المحدد: {name} ({size} كيلوبايت)",
+    "pasteDataPlaceholder": "الصق البيانات بتنسيق {format}...",
+    "errors": "أخطاء:",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "downloadFile": "تحميل الملف",
+    "showColumn": "إظهار العمود",
+    "defaultSorting": "الترتيب الافتراضي",
+    "alignment": "المحاذاة",
+    "none": "لا شيء",
+    "asc": "أ-ي",
+    "desc": "ي-أ",
+    "left": "يسار",
+    "center": "وسط",
+    "right": "يمين",
+    "sortTooltipMultiple": "انقر: تغيير الترتيب | Shift+انقر: إضافة للترتيب",
+    "sortTooltipSingle": "انقر: ترتيب | Shift+انقر: إضافة للترتيب",
+    "filterPlaceholder": "تصفية...",
+    "valuePlaceholder": "القيمة (نص أو JSON)",
+    "previousRecord": "السجل السابق",
+    "nextRecord": "السجل التالي",
+    "importNoData": "الملف لا يحتوي على بيانات للاستيراد",
+    "importError": "خطأ في استيراد الملف",
+    "main": "الرئيسي",
+    "tabs": {
+      "main": "الرئيسي",
+      "info": "معلومات",
+      "details": "التفاصيل",
+      "seo": "SEO",
+      "slug": "الرابط"
+    },
+    "editLanguage": "اللغة للتعديل",
+    "applyJson": "تطبيق JSON",
+    "selectFile": "اختر ملفاً",
+    "fileNotSelected": "لم يتم اختيار ملف",
+    "addField": "إضافة حقل",
+    "width": "العرض",
+    "widthAuto": "تلقائي",
+    "widthReset": "إعادة تعيين",
+    "widthPixels": "بكسل",
+    "fields": {
+      "roles": {
+        "id": "المعرف",
+        "uuid": "UUID",
+        "raid": "RAID",
+        "title": "الدور",
+        "name": "الاسم",
+        "plural": "الأدوار",
+        "description": "الوصف",
+        "is_system": "دور النظام",
+        "order": "الترتيب",
+        "suffix": "اللاحقة",
+        "xaid": "النطاق",
+        "created_at": "تم الإنشاء",
+        "updated_at": "تم التحديث",
+        "data_in": "البيانات (JSON)",
+        "main": "الرئيسي!"
+      },
+      "contractors": {
+        "id": "المعرف",
+        "uuid": "UUID",
+        "title": "العنوان",
+        "reg": "رقم التسجيل",
+        "tin": "الرقم الضريبي",
+        "status_name": "الحالة",
+        "city_name": "المدينة",
+        "order": "الترتيب",
+        "xaid": "النطاق",
+        "media_id": "الشعار",
+        "created_at": "تم الإنشاء",
+        "updated_at": "تم التحديث"
+      },
+      "taxonomy": {
+        "id": "المعرف",
+        "uuid": "UUID",
+        "entity": "الكيان",
+        "name": "الاسم",
+        "title": "العنوان",
+        "category": "الفئة",
+        "sort_order": "ترتيب الفرز",
+        "created_at": "تم الإنشاء",
+        "updated_at": "تم التحديث",
+        "deleted_at": "تم الحذف",
+        "data_in": "البيانات (JSON)"
+      },
+      "texts": {
+        "title": "العنوان",
+        "type": "النوع",
+        "status_name": "الحالة",
+        "is_public": "عام",
+        "content": "المحتوى",
+        "data_in.images": "الصور",
+        "data_in.seo_title": "عنوان SEO",
+        "data_in.seo_description": "وصف SEO",
+        "data_in.seo_keywords": "كلمات SEO المفتاحية",
+        "data_in.slug": "الرابط"
+      }
+    }
+  },
+  "taxonomy": {
+    "entityOptions": {
+      "channel": "القناة",
+      "city": "المدينة",
+      "country": "الدولة",
+      "content": "المحتوى",
+      "currency": "العملة",
+      "domain": "النطاق",
+      "isic": "ISIC",
+      "sex": "الجنس",
+      "asset": "الأصل",
+      "asset_variant": "نوع الأصل",
+      "base": "القاعدة",
+      "base_move": "المركبات",
+      "base_move_route": "ورقة المسار",
+      "contractor": "المقاولون",
+      "deal": "الصفقة",
+      "employee": "الموظف",
+      "employee_echelon": "الهيكل التنظيمي",
+      "employee_timesheet": "جدول الحضور",
+      "employee_leave": "جدول الإجازات",
+      "finance": "المالية",
+      "goal": "المشاريع",
+      "human": "الأشخاص",
+      "identity": "الوصول",
+      "journal": "سجل النشاط",
+      "journal_connection": "سجل الاتصالات",
+      "journal_generation": "سجل استخدام AI",
+      "journal_system": "السجل النظامي",
+      "key": "مفاتيح الوصول",
+      "location": "الموقع",
+      "message": "الرسالة",
+      "message_thread": "خيوط المحادثات",
+      "media": "الوسائط",
+      "notice": "الإشعار",
+      "outreach": "التواصل",
+      "outreach_referral": "برنامج الإحالة",
+      "product": "المنتج",
+      "product_variant": "نوع المنتج",
+      "permission": "الإذن",
+      "qualification": "المؤهل",
+      "relation": "العلاقة",
+      "role": "الدور",
+      "role_permission": "أذونات الدور",
+      "segment": "القطاع",
+      "setting": "الإعداد",
+      "text": "النص",
+      "text_variant": "نوع النص",
+      "taxonomy": "المصنف",
+      "university": "التعليم",
+      "user": "المستخدم",
+      "user_ban": "حظر المستخدم",
+      "user_session": "جلسة المستخدم",
+      "user_verification": "التحقق من المستخدم",
+      "vote": "التصويت",
+      "wallet": "المحفظة",
+      "wallet_transaction": "المعاملة",
+      "expanse": "النطاق",
+      "yield": "التلعيب",
+      "zoo": "الحيوان",
+      "contractors.status_name": "حالة المقاولين",
+      "contractors.city_name": "مدينة المقاولين"
+    },
+    "fields": {
+      "entity": "الكيان",
+      "name": "الاسم",
+      "title": "العنوان",
+      "category": "الفئة",
+      "sortOrder": "ترتيب الفرز"
+    }
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "fields": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني"
+    },
+    "actions": {
+      "save": "حفظ",
+      "logOut": "تسجيل الخروج"
+    }
+  },
+  "confirmEmailChange": {
+    "title": "تأكيد تغيير البريد",
+    "successMessage": "تم تحديث البريد. يرجى تسجيل الدخول مرة أخرى.",
+    "backToLogin": "العودة لتسجيل الدخول"
+  },
+  "breadcrumbs": {
+    "admin_apnel": "لوحة الإدارة",
+    "contractors": "المقاولون"
+  },
+  "api": {
+    "rest": {
+      "notFound": "غير موجود",
+      "queryFailed": "فشل الاستعلام"
+    }
+  },
+  "roleSchema": {
+    "title": "إعدادات الأدوار",
+    "loading": "جاري التحميل...",
+    "save": "حفظ"
+  }
+}

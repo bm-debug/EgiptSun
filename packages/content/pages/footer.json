@@ -1,0 +1,86 @@
+{
+  "en": {
+    "footer": {
+      "groups": {
+        "main": "Main",
+        "Products": "Products",
+        "Technical": "Technical",
+        "social_networks": "Social Networks"
+      },
+      "social": {
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter",
+        "facebook": "Facebook"
+      },
+      "all_rights_reserved": "All rights reserved",
+      "get_support": "Get Support :",
+      "newsletter": "Sign up for newsletter :",
+      "newsletter_placeholder": "Enter email",
+      "newsletter_success_title": "Subscribed",
+      "newsletter_success_description": "You have been successfully added to the mailing list.",
+      "newsletter_ok": "OK",
+      "newsletter_error_empty": "Enter your email",
+      "newsletter_error_invalid": "Invalid email address",
+      "address": "Delaware, US",
+      "slogan": "The first truly open operating system for SMBs. Combine a rock-solid digital foundation with AI agents and modular plugins while maintaining total data and API sovereignty.",
+      "language": "Language",
+      "link_labels": {}
+    }
+  },
+  "ru": {
+    "footer": {
+      "groups": {
+        "main": "Основные",
+        "Products": "Продукты",
+        "Technical": "Технические",
+        "social_networks": "Социальные сети"
+      },
+      "social": {
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter",
+        "facebook": "Facebook"
+      },
+      "all_rights_reserved": "Все права защищены",
+      "get_support": "Поддержка :",
+      "newsletter": "Подписка на рассылку :",
+      "newsletter_placeholder": "Введите email",
+      "newsletter_success_title": "Подписка оформлена",
+      "newsletter_success_description": "Вы успешно добавлены в список рассылки.",
+      "newsletter_ok": "OK",
+      "newsletter_error_empty": "Введите email",
+      "newsletter_error_invalid": "Некорректный email",
+      "address": "Delaware, US",
+      "slogan": "Первая по-настоящему открытая операционная система для малого и среднего бизнеса. Надёжный цифровой фундамент, ИИ-агенты и модульные плагины при полном контроле над данными и API.",
+      "language": "Язык",
+      "link_labels": {}
+    }
+  },
+  "ar": {
+    "footer": {
+      "groups": {
+        "main": "الرئيسية",
+        "Products": "المنتجات",
+        "Technical": "التقنية",
+        "social_networks": "الشبكات الاجتماعية"
+      },
+      "social": {
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter",
+        "facebook": "Facebook"
+      },
+      "all_rights_reserved": "جميع الحقوق محفوظة",
+      "get_support": "الدعم :",
+      "newsletter": "النشرة الإخبارية :",
+      "newsletter_placeholder": "أدخل البريد الإلكتروني",
+      "newsletter_success_title": "تم الاشتراك",
+      "newsletter_success_description": "تمت إضافتك بنجاح إلى قائمة البريد.",
+      "newsletter_ok": "موافق",
+      "newsletter_error_empty": "أدخل بريدك الإلكتروني",
+      "newsletter_error_invalid": "بريد إلكتروني غير صالح",
+      "address": "Delaware, US",
+      "slogan": "أول نظام تشغيل مفتوح حقاً للشركات الصغيرة والمتوسطة. اجمع بين أساس رقمي متين ووكلاء الذكاء الاصطناعي والإضافات المعيارية مع الحفاظ على السيادة الكاملة للبيانات وواجهات برمجة التطبيقات.",
+      "language": "اللغة",
+      "link_labels": {}
+    }
+  }
+}

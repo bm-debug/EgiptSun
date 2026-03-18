@@ -1,0 +1,99 @@
+echo "🔍 Running code validation..."
+
+# # Check for Russian characters and non-Latin symbols in code files
+# echo "📝 Checking for Russian characters and non-Latin symbols (deletions are ignored)..."
+
+# # Find all TypeScript, JavaScript, JSX, TSX, JSON, and MDX files
+# FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx|js|jsx|json|mdx)$' || true)
+
+# if [ -n "$FILES" ]; then
+#     # Check for Russian characters and non-Latin symbols
+#     RUSSIAN_FOUND=false
+    
+#     for file in $FILES; do
+#         # Skip node_modules and other build directories and localization files
+#         if [[ "$file" == *"node_modules"* ]] || [[ "$file" == *".next"* ]] || [[ "$file" == *"dist"* ]] || [[ "$file" == *".husky"* ]] || [[ "$file" == *"src/messages/"* ]] ||
+#          [[ "$file" == "packages/lib/transliteration.ts" ]] || 
+#          [[ "$file" == "packages/components/misc/mdx-content.tsx" ]] ||
+#             [[ "$file" == packages/content/locales/* ]] || [[ "$file" == packages/components/shared/mdx-content.tsx ]] || [[ "$file" == settings.ts ]] ; then
+#             continue
+#         fi
+        
+#         # Check for Russian characters (а-я, А-Я, ё, Ё) - only in ADDED lines (ignore deletions)
+#         if git diff --cached "$file" | grep '^+[^+]' | grep -q '[а-яёА-ЯЁ]'; then
+#             echo "❌ Russian characters found in: $file"
+#             echo "   Lines with Russian characters:"
+#             git diff --cached "$file" | grep '^+[^+]' | grep -n '[а-яёА-ЯЁ]' | head -5
+#             RUSSIAN_FOUND=true
+#         fi
+        
+#         # Check for other non-Latin symbols (except allowed ones) - only in ADDED lines (ignore deletions)
+#         if git diff --cached "$file" | grep '^+[^+]' | grep -q '[^\x00-\x7F©®™€£¥¢§¶†‡•‣⁂※,.:;!?()[\]{}]'; then
+#             echo "❌ Non-Latin symbols found in: $file"
+#             echo "   Lines with non-Latin symbols:"
+#             git diff --cached "$file" | grep '^+[^+]' | grep -n '[^\x00-\x7F©®™€£¥¢§¶†‡•‣⁂※,.:;!?()[\]{}]' | head -5
+#             RUSSIAN_FOUND=true
+#         fi
+#     done
+    
+#     if [ "$RUSSIAN_FOUND" = true ]; then
+#         echo ""
+#         echo "🚫 Commit blocked!"
+#         echo "   Found Russian characters or non-Latin symbols in code files."
+#         echo "   Please remove them and try again."
+#         echo ""
+#         echo "💡 Allowed symbols: ©, ®, ™, €, £, ¥, ¢, §, ¶, †, ‡, •, ‣, ⁂, ※"
+#         echo "   Code should be written in English only."
+#         exit 1
+#     fi
+# fi
+
+# # Check for Russian characters in comments and strings (warnings only)
+# echo "⚠️  Checking comments and strings for Russian text (warnings only)..."
+
+# for file in $FILES; do
+#     if [[ "$file" == *"node_modules"* ]] || [[ "$file" == *".next"* ]] || [[ "$file" == *"dist"* ]] || [[ "$file" == *".husky"* ]] || [[ "$file" == *"src/messages/"* ]] || [[ "$file" == "src/lib/transliteration.ts" ]] || [[ "$file" == content/* ]]; then
+#         continue
+#     fi
+    
+#     # Check for Russian in comments (// and /* */) - only in ADDED lines (ignore deletions)
+#     if git diff --cached "$file" | grep '^+[^+]' | grep -E '(//.*[а-яёА-ЯЁ]|/\*.*[а-яёА-ЯЁ])'; then
+#         echo "⚠️  Warning: Russian text found in comments in: $file"
+#     fi
+    
+#     # Check for Russian in strings (but allow in content files) - only in ADDED lines (ignore deletions)
+#     if [[ "$file" != *"content/"* ]] && [[ "$file" != *"data/"* ]]; then
+#         if git diff --cached "$file" | grep '^+[^+]' | grep -E '[^"]*[а-яёА-ЯЁ][^"]*'; then
+#             echo "⚠️  Warning: Russian text found in strings in: $file"
+#         fi
+#     fi
+# done
+
+# echo "🧪 Running quick e2e tests..."
+# if ! bun run quick-test; then
+#     echo "❌ E2E quick tests failed. Aborting commit."
+#     exit 1
+# fi
+
+# echo "🧪 Running integration tests..."
+# if ! bun run test:integration; then
+#     echo "❌ Integration tests failed. Aborting commit."
+#     exit 1
+# fi
+
+# echo "🧪 Running build cms..."
+# if ! bun run build:cms; then
+#     echo "❌ Running build failed. Aborting commit."
+#     exit 1
+# fi
+
+echo "🧪 Running type-check for site..."
+if ! bun run type-check:site; then
+    echo "❌ Running build failed. Aborting commit."
+    exit 1
+fi
+
+echo "✅ Code validation passed!"
+echo "🚀 Proceeding with commit..."
+
+

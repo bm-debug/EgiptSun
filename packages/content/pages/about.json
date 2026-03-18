@@ -1,0 +1,161 @@
+{
+  "en": {
+    "hero": {
+      "badge": "About The Project",
+      "title": "Digital Product Generation Platform",
+      "subtitle": "The project is built with a strong focus on Developer Experience (DX) and scalability.",
+      "description": "Altrp is a modern, type-safe, and high-performance monorepo for building web applications. It consists of 4 main projects: site, cms, bot, and app.",
+      "button1": "Contact us",
+      "button2": "Key Features"
+    },
+    "statsTitle": "By the numbers",
+    "imageAlts": ["Charter team member working", "Modern workspace setup", "Team collaboration", "Founding team collaboration"],
+    "mission": {
+      "quote": "The project is built with a strong focus on Developer Experience (DX) and scalability, leveraging the best tools from the modern web ecosystem.",
+      "paragraph1": "Altrp is a modern, type-safe, and high-performance monorepo for building web applications. It consists of 4 main projects: site (Static website — Next.js 15, React 19, Tailwind CSS 4), cms (Admin panel with MDX support), bot (AI agents and Telegram bots with SQLite), and app (Payload Backend with PostgreSQL).",
+      "paragraph2": "The project is built with a strong focus on Developer Experience (DX) and scalability, leveraging the best tools from the modern web ecosystem. Linting, formatting, Git hooks, and code generation come out-of-the-box."
+    },
+    "values": {
+      "title": "Key Features",
+      "items": [
+        {
+          "icon": "Zap",
+          "title": "Blazing Fast",
+          "description": "Powered by Bun and Next.js App Router with Server Components."
+        },
+        {
+          "icon": "Shield",
+          "title": "Git-Powered CMS",
+          "description": "All content is version-controlled in the repository and easily editable."
+        },
+        {
+          "icon": "Heart",
+          "title": "Type Safety",
+          "description": "TypeScript throughout, with schema validation for content and forms via Zod."
+        },
+        {
+          "icon": "Users",
+          "title": "Superior DX",
+          "description": "Linting, formatting, Git hooks, and code generation out-of-the-box."
+        }
+      ]
+    },
+    "team": {
+      "title": "Project Structure",
+      "description": "This is a monorepo with 4 main applications: site (Static website, port 3100), cms (MDX or SQLite Admin panel, port 3200), bot (AI bots, port 3300), and app (Payload CMS, port 3000). Shared packages: components, lib, content.",
+      "members": []
+    },
+    "legal": {
+      "title": "Details and Documents",
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "content": {
+            "paragraph1": "We are committed to protecting your personal information.",
+            "paragraph2": "All data is processed in accordance with applicable legislation.",
+            "linkText": "Learn more about the privacy policy",
+            "linkHref": "/privacy"
+          }
+        }
+      ]
+    }
+  },
+  "ru": {
+    "hero": {
+      "badge": "О проекте",
+      "title": "Платформа для создания цифровых продуктов",
+      "subtitle": "Упор на удобство разработчиков (DX) и масштабируемость.",
+      "description": "Altrp — современный, типобезопасный и высокопроизводительный монорепозиторий для веб-приложений. В него входят 4 проекта: site, cms, bot и app.",
+      "button1": "Связаться",
+      "button2": "Ключевые возможности"
+    },
+    "statsTitle": "По цифрам",
+    "imageAlts": ["Работа команды", "Современное рабочее пространство", "Командное взаимодействие", "Команда основателей"],
+    "mission": {
+      "quote": "Проект ориентирован на удобство разработчиков (DX) и масштабируемость, с опорой на лучшие инструменты современной веб-экосистемы.",
+      "paragraph1": "Altrp — современный, типобезопасный и высокопроизводительный монорепозиторий. 4 проекта: site (статический сайт — Next.js 15, React 19, Tailwind CSS 4), cms (админ-панель с MDX), bot (AI-агенты и Telegram-боты на SQLite), app (Payload Backend с PostgreSQL).",
+      "paragraph2": "Упор на Developer Experience (DX) и масштабируемость. Линтинг, форматирование, Git-хуки и генерация кода включены из коробки."
+    },
+    "values": {
+      "title": "Ключевые возможности",
+      "items": [
+        {
+          "icon": "Zap",
+          "title": "Высокая скорость",
+          "description": "Bun и Next.js App Router с серверными компонентами."
+        },
+        {
+          "icon": "Shield",
+          "title": "CMS на Git",
+          "description": "Контент в репозитории под версионированием, удобное редактирование."
+        },
+        {
+          "icon": "Heart",
+          "title": "Типобезопасность",
+          "description": "TypeScript и валидация схем контента и форм через Zod."
+        },
+        {
+          "icon": "Users",
+          "title": "Удобство для разработчиков",
+          "description": "Линтинг, форматирование, Git-хуки и генерация кода из коробки."
+        }
+      ]
+    },
+    "team": {
+      "title": "Структура проекта",
+      "description": "Монорепозиторий из 4 приложений: site (статический сайт, порт 3100), cms (админ-панель MDX/SQLite, порт 3200), bot (AI-боты, порт 3300), app (Payload CMS, порт 3000). Общие пакеты: components, lib, content.",
+      "members": []
+    },
+    "legal": {
+      "title": "Реквизиты и документы",
+      "items": [
+        {
+          "title": "Политика конфиденциальности",
+          "content": {
+            "paragraph1": "Мы обязуемся защищать вашу личную информацию.",
+            "paragraph2": "Данные обрабатываются в соответствии с применимым законодательством.",
+            "linkText": "Подробнее о политике конфиденциальности",
+            "linkHref": "/privacy"
+          }
+        }
+      ]
+    }
+  },
+  "ar": {
+    "hero": {
+      "badge": "عن المشروع",
+      "title": "منصة إنشاء المنتجات الرقمية",
+      "subtitle": "تركيز قوي على تجربة المطور (DX) وقابلية التوسع.",
+      "description": "Altrp مستودع أحادي حديث وآمن من حيث الأنواع وعالي الأداء لبناء تطبيقات الويب. يتكون من 4 مشاريع: site وcms وbot وapp.",
+      "button1": "اتصل بنا",
+      "button2": "الميزات الرئيسية"
+    },
+    "statsTitle": "بالأرقام",
+    "imageAlts": ["عضو فريق يعمل", "مساحة عمل حديثة", "تعاون الفريق", "تعاون الفريق المؤسس"],
+    "mission": {
+      "quote": "المشروع مبني على تركيز قوي على تجربة المطور (DX) وقابلية التوسع، بالاعتماد على أفضل أدوات النظام البيئي الحديث للويب.",
+      "paragraph1": "Altrp مستودع أحادي حديث وآمن وعالي الأداء. 4 مشاريع: site (موقع ثابت — Next.js 15, React 19, Tailwind CSS 4)، cms (لوحة إدارة مع MDX)، bot (وكلاء ذكاء اصطناعي وبوتات تيليجرام مع SQLite)، app (Payload Backend مع PostgreSQL).",
+      "paragraph2": "تركيز على تجربة المطور (DX) وقابلية التوسع. الفحص والتنسيق وربط Git وتوليد الكود متوفرة جاهزة."
+    },
+    "values": {
+      "title": "الميزات الرئيسية",
+      "items": [
+        {"icon": "Zap", "title": "أداء عالي", "description": "Bun وNext.js App Router مع مكونات الخادم."},
+        {"icon": "Shield", "title": "CMS يعتمد على Git", "description": "المحتوى تحت التحكم بالإصدارات في المستودع، تحرير سهل."},
+        {"icon": "Heart", "title": "أمان الأنواع", "description": "TypeScript والتحقق من مخططات المحتوى والنماذج عبر Zod."},
+        {"icon": "Users", "title": "تجربة مطور متميزة", "description": "فحص وتنسيق وربط Git وتوليد كود جاهز."}
+      ]
+    },
+    "team": {
+      "title": "هيكل المشروع",
+      "description": "مستودع أحادي من 4 تطبيقات: site (موقع ثابت، منفذ 3100)، cms (لوحة إدارة MDX/SQLite، منفذ 3200)، bot (بوتات ذكاء اصطناعي، منفذ 3300)، app (Payload CMS، منفذ 3000). حزم مشتركة: components، lib، content.",
+      "members": []
+    },
+    "legal": {
+      "title": "التفاصيل والوثائق",
+      "items": [
+        {"title": "سياسة الخصوصية", "content": {"paragraph1": "نلتزم بحماية معلوماتك الشخصية.", "paragraph2": "تتم معالجة البيانات وفق التشريعات المعمول بها.", "linkText": "المزيد عن سياسة الخصوصية", "linkHref": "/privacy"}}
+      ]
+    }
+  }
+}

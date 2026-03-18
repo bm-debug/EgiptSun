@@ -1,0 +1,54 @@
+# Build stage
+FROM node:20-slim AS builder
+
+# Install build dependencies and bun
+RUN apt-get update && apt-get install -y python3 make g++ unzip curl && \
+    npm install -g bun && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+WORKDIR /app
+
+# Copy socket package.json
+COPY apps/socket/package.json ./apps/socket/
+
+# Install dependencies using bun
+# Set bun cache directory to /tmp to reduce disk usage
+ENV BUN_INSTALL_CACHE_DIR=/tmp/bun-cache
+WORKDIR /app/apps/socket
+RUN rm -rf /tmp/bun-cache && \
+    bun install --production --no-verify && \
+    rm -rf /tmp/bun-cache /tmp/* /var/tmp/*
+
+# Production stage
+FROM node:20-slim AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+# Install bun
+RUN apt-get update && apt-get install -y unzip curl && \
+    npm install -g bun && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs socketjs
+
+# Copy socket application files and dependencies
+COPY --from=builder --chown=socketjs:nodejs /app/apps/socket/node_modules ./apps/socket/node_modules
+COPY --chown=socketjs:nodejs apps/socket/index.js ./apps/socket/
+COPY --chown=socketjs:nodejs apps/socket/package.json ./apps/socket/
+COPY --chown=socketjs:nodejs apps/socket/example.env ./apps/socket/
+
+WORKDIR /app/apps/socket
+
+USER socketjs
+
+EXPOSE 3001
+
+ENV PORT=3001
+ENV HOSTNAME="0.0.0.0"
+
+# Start the socket server using bun
+CMD ["bun", "run", "start"]

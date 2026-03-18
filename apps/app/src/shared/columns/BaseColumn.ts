@@ -1,0 +1,73 @@
+import { Context, AdminFilter } from '../types'
+export default class BaseColumn {   
+    constructor(public options: BaseColumnOptions) {
+
+    }
+    async prepare(value: any): Promise<any> {
+
+        if(this.options.prepare) {
+            return await this.options.prepare(value, this)
+        }
+        if(this.options.type === 'json' && typeof value === 'object') {
+            
+            return JSON.stringify(value)
+        }
+        return value
+    }
+
+    public getOption<T extends keyof BaseColumnOptions>(optionName: T): BaseColumnOptions[T] | undefined {
+        return this.options?.[optionName]
+    }
+}
+
+export type RelationConfig = {
+    collection: string;      // Target collection name
+    valueField: string;      // Field to use as value (e.g., 'uuid')
+    labelField: string;      // Field to display as label (e.g., 'email')
+    labelFields?: string[];  // Multiple fields for composite label (e.g., ['first_name', 'last_name'])
+    // Optional default filters to apply when fetching relation options
+    filters?: AdminFilter[];
+    // If true, propagate parent table search (s) to relation fetch
+    inheritSearch?: boolean;
+}
+
+export type BaseColumnOptions = {
+    altrpIndex?: boolean //Is altrp main index feild
+    title?: string;
+    hidden?: boolean;
+    hiddenTable?: boolean;  // Hide only in table, but show in forms
+    required?: boolean;
+    readOnly?: boolean;
+    unique?: boolean;
+    fieldType?: 'text' | 'number' | 'email' | 'phone' | 'password' | 'boolean' | 'date' | 'time' | 'datetime' | 'json' | 'array' | 'object' | 'price' | 'enum' | 'image' | 'images' | 'tiptap';
+    prepare?: (value: any, column: BaseColumn) => any;
+    virtual?: boolean;  // Virtual field, computed on backend
+    value?: (instance: any) => Promise<any> | any;  // Required if virtual = true
+    type?: 'text' | 'number' | 'email' | 'phone' | 'password' | 'boolean' | 'date' | 'time' | 'datetime' | 'json' | 'array' | 'object' | 'price' | 'enum';
+    textarea?: boolean;  // Use textarea instead of input for text fields
+    enum?: {
+        values: string[];
+        labels: string[];
+    };
+    /**
+     * Indicates if the field stores i18n translations
+     */
+    i18n?: true,
+    relation?: RelationConfig;
+    index?: boolean;
+    defaultValue?: any;
+    defaultCell?: any;  // Default value to display in table cell when value is empty/null
+    hooks?: {
+        beforeChange?: (value: any, instance: any) => any;
+        afterChange?: (value: any, instance: any) => any;
+        beforeSave?: (value: any, instance: any, context: Context) => any;
+    };
+    format?: (value: any, locale?: string) => any;
+    validate?: (value: any) => boolean;
+    transform?: (value: any) => any;
+    filter?: (value: any) => any;
+    sort?: (value: any) => any;
+    search?: (value: any) => any;
+    group?: (value: any) => any;
+    groupBy?: (value: any) => any;
+}

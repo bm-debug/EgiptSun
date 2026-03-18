@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": [],
+    "paths": {
+      "@/*": [
+        "./*",
+        "./apps/site/src/*",
+        "./apps/app/src/*"
+      ],
+      "@/db/*": [
+        "./packages/db/*"
+      ],
+      "@/lib/*": [
+        "./packages/lib/*"
+      ],
+      "@/hooks/*": [
+        "./packages/hooks/*"
+      ],
+      "@/components/*": [
+        "./packages/components/*"
+      ],
+      "@/repositories/*": [
+        "./packages/repositories/*"
+      ],
+      "@/types/*": [
+        "./packages/types/*"
+      ],
+      "@/settings": [
+        "./settings.ts"
+      ],
+      "@/content/*": [
+        "./packages/content/*"
+      ]
+    }
+  },
+  "include": [
+    "apps/**/*",
+    "shared/**/*",
+    "packages/**/*"
+  ],
+  "exclude": ["node_modules"]
+}

@@ -1,14 +1,15 @@
 import React from "react";
+import { Container } from "./packages/components/misc/layout/сontainer";
 import { Navbar } from "./packages/components/blocks-marketing/navbar/navbar";
 import Hero07 from "./packages/components/blocks-marketing/hero/hero-07";
 import FooterSection from "./packages/components/blocks-marketing/footer/footer-00";
 import { About00, type About00Props } from "./packages/components/blocks-marketing/about/about-00";
-import Team01Page from "./packages/components/blocks-marketing/team/team-01";
+import { HomeAboutTeamSection } from "./packages/components/blocks-marketing/EgiptSun/HomeAboutTeamSection";
 import { HeroHeader } from "./packages/components/blocks-marketing/header";
 import { BookingForm } from "./packages/components/blocks-marketing/booking-form";
 import { ScrollToTopFloating, ChatFloating } from "./packages/components/blocks-marketing/footer/footer-floating-actions";
 import { List2 } from "./packages/components/blocks-marketing/EgiptSun/List";
-import { Testimonial19 } from "./packages/components/blocks-marketing/EgiptSun/Testimonials_19.tsx";
+import { Testimonial19 } from "./packages/components/blocks-marketing/EgiptSun/Testimonials_19";
 
 
 
@@ -43,40 +44,16 @@ export const PUBLIC_PAGES_COMPONENTS: PubliPagesComponent = {
   home: (props) => (
     <SiteLayout>
       <Hero07 />
-      <section id="about">
-        <About00 
-          {...(props as About00Props)}
-          hero={{
-            badge: "О салоне",
-            title: "Солнце Египта",
-            subtitle: "Откройте тайны древнего Египта в каждом прикосновении!",
-            description: ""
-          }}
-          mission={{
-            quote: "Искусство массажа. Наши мастера виртуозно владеют десятками техник: от глубокого спортивного восстановления и классики до лимфодренажных и экзотических ритуалов. Каждое прикосновение индивидуально подобрано, учитывая особенности вашего тела, и направлено на снятие зажимов и возвращение легкости вашему телу.\n\nКомплексные спа-программы. Позвольте себе полноценный побег от реальности. Наши программы — это выверенные сеты из пилингов, скрабов, обертываний и ухода, которые преображают кожу и дарят глубокий релакс. От экспресс-массажа после рабочего дня до комплексных спа-программ на несколько часов, которые решают любые задачи: от снятия зажимов до полной перезагрузки сознания.",
-            paragraph1: "Мы используем только органические гипоаллергенные масла и премиальную косметику, которые питают вашу кожу и дарят ощущение обновления.\n\nТермальный комплекс. Почувствуйте мягкое, волшебное тепло нашего хаммама или классический жар сауны. Прогрев мышц перед массажем усиливает эффект в разы, помогая токсинам покинуть организм.",
-            paragraph2: "Идеальное завершение любого визита. После сеанса вы сможете отдохнуть в нашей соляной комнате: чистый ионизированный воздух укрепит иммунитет и подарит ощущение морского бриза, не покидая города."
-          }}
-          values={{
-            items: [
-              { title: "Профессионализм", content: "" },
-              { title: "Качество", content: "" },
-              { title: "Атмосфера", content: "" },
-              { title: "Забота", content: "" },
-            ]
-          }}
-        />
-      </section>
-      <div id="team">
-        <Team01Page />
-      </div>
+      <HomeAboutTeamSection {...(props as About00Props)} />
       <List2 heading="Наши услуги" id="services" />
       <Testimonial19 />
     </SiteLayout>
   ),
   about: (props) => (
     <SiteLayout>
-      <About00 {...(props as About00Props)} />
+      <Container>
+        <About00 {...(props as About00Props)} />
+      </Container>
     </SiteLayout>
   ),
   ads: (props) => (

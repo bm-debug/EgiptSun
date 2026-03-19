@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "next dev -p 3105 -H 0.0.0.0 --webpack",
+    "dev": "next dev -p 3125 -H 0.0.0.0 --webpack",
     "dev:wrangler": "bun run build:static && wrangler pages dev --port 3305",
     "dev:all": "cross-env NEXT_PORT=3103 WRANGLER_PORT=3303 PROXY_PORT=3405 node scripts/dev-server.mjs",
     "build": "next build --experimental-build-mode compile",

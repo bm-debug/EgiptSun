@@ -20,6 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Container } from "@/components/misc/layout/сontainer";
 import { cn } from "@/lib/utils";
 import { MASSAGE_DATA } from "./massage-data";
 import { BookingModal } from "./BookingModal";
@@ -44,6 +45,31 @@ interface List2Props {
   items?: ListItem[];
   className?: string;
   id?: string;
+}
+
+type SessionPricingOption = { sessions: number; price: number };
+
+/** List price = single-session rate × count; bundle = package price. Strikethrough when bundle saves money. */
+function getSessionBundlePriceDisplay(
+  options: SessionPricingOption[],
+  sessionsSelected: number,
+) {
+  const unitPrice =
+    options.find((o) => o.sessions === 1)?.price ?? options[0]?.price ?? 0;
+  const selectedOption =
+    options.find((o) => o.sessions === sessionsSelected) ?? options[0] ?? {
+      sessions: 1,
+      price: unitPrice,
+    };
+  const bundlePrice = selectedOption.price;
+  const listPriceAtSingleRate = unitPrice * sessionsSelected;
+  const showListStrikethrough =
+    sessionsSelected > 1 && listPriceAtSingleRate > bundlePrice;
+  return {
+    bundlePrice,
+    listPriceAtSingleRate,
+    showListStrikethrough,
+  };
 }
 
 const List2 = ({
@@ -189,7 +215,7 @@ const List2 = ({
   };
   return (
     <section id={id} className={cn("py-32", className)}>
-      <div className="container px-4 md:px-8">
+      <Container>
         <h1 className="mb-10 text-center text-3xl font-semibold md:mb-14 md:text-4xl">
           {heading}
         </h1>
@@ -263,13 +289,13 @@ const List2 = ({
                     </>
                   ) : item.sessionOptions ? (
                     <>
-                      {console.log('Massage:', item.title, 'sessionOptions:', item.sessionOptions, 'selectedSessions[', index, ']:', selectedSessions[index])}
                       <select
-                        value={selectedSessions[index] || 1}
+                        value={selectedSessions[item.title] || 1}
                         onChange={(e) => {
-                          const newValue = Number(e.target.value);
-                          alert(`CHANGE: index=${index}, sessions=${newValue}`);
-                          setSelectedSessions({...selectedSessions, [index]: newValue});
+                          setSelectedSessions({
+                            ...selectedSessions,
+                            [item.title]: Number(e.target.value),
+                          });
                         }}
                         className="px-2 py-2 border rounded-md text-sm bg-background whitespace-nowrap"
                       >
@@ -279,23 +305,29 @@ const List2 = ({
                           </option>
                         ))}
                       </select>
-                      <div className="text-xs text-blue-500 mb-1">DEBUG: {item.title} = {selectedSessions[item.title] || 1}</div>
-                      <div className="flex flex-col items-end gap-1">
-                        {(() => {
-                          const sessionsCount = selectedSessions[item.title] || 1;
-                          if (sessionsCount > 1) {
-                            return (
+                      {(() => {
+                        const sessionsSelected = selectedSessions[item.title] || 1;
+                        const {
+                          bundlePrice,
+                          listPriceAtSingleRate,
+                          showListStrikethrough,
+                        } = getSessionBundlePriceDisplay(
+                          item.sessionOptions,
+                          sessionsSelected,
+                        );
+                        return (
+                          <div className="flex flex-col items-end gap-0.5">
+                            {showListStrikethrough ? (
                               <span className="text-sm line-through text-muted-foreground whitespace-nowrap">
-                                {formatPrice(item.sessionOptions[0].price * sessionsCount)}
+                                {formatPrice(listPriceAtSingleRate)}
                               </span>
-                            );
-                          }
-                          return null;
-                        })()}
-                        <span className="font-semibold whitespace-nowrap">
-                          {formatPrice(item.sessionOptions.find(opt => opt.sessions === (selectedSessions[item.title] || 1))?.price || item.sessionOptions[0]?.price)}
-                        </span>
-                      </div>
+                            ) : null}
+                            <span className="font-semibold whitespace-nowrap">
+                              {formatPrice(bundlePrice)}
+                            </span>
+                          </div>
+                        );
+                      })()}
                       <Button 
                         variant="outline"
                         onClick={(e) => {
@@ -390,7 +422,10 @@ const List2 = ({
                       <select
                         value={selectedSessions[item.title] || 1}
                         onChange={(e) => {
-                          setSelectedSessions({...selectedSessions, [item.title]: Number(e.target.value)});
+                          setSelectedSessions({
+                            ...selectedSessions,
+                            [item.title]: Number(e.target.value),
+                          });
                         }}
                         className="px-2 py-2 border rounded-md text-sm bg-background whitespace-nowrap"
                       >
@@ -400,9 +435,29 @@ const List2 = ({
                           </option>
                         ))}
                       </select>
-                      <span className="font-semibold whitespace-nowrap">
-                        {formatPrice(item.sessionOptions.find(opt => opt.sessions === (selectedSessions[item.title] || 1))?.price || item.sessionOptions[0]?.price)}
-                      </span>
+                      {(() => {
+                        const sessionsSelected = selectedSessions[item.title] || 1;
+                        const {
+                          bundlePrice,
+                          listPriceAtSingleRate,
+                          showListStrikethrough,
+                        } = getSessionBundlePriceDisplay(
+                          item.sessionOptions,
+                          sessionsSelected,
+                        );
+                        return (
+                          <div className="flex flex-col items-end gap-0.5">
+                            {showListStrikethrough ? (
+                              <span className="text-sm line-through text-muted-foreground whitespace-nowrap">
+                                {formatPrice(listPriceAtSingleRate)}
+                              </span>
+                            ) : null}
+                            <span className="font-semibold whitespace-nowrap">
+                              {formatPrice(bundlePrice)}
+                            </span>
+                          </div>
+                        );
+                      })()}
                       <Button 
                         variant="outline"
                         onClick={(e) => {
@@ -454,11 +509,11 @@ const List2 = ({
           </div>
           <Separator />
         </div>
-      </div>
+      </Container>
       
       {/* Cart Summary Section */}
       {cartItems.length > 0 && (
-        <div className="container px-4 md:px-8 mt-12">
+        <Container className="mt-12">
           <div className="bg-muted rounded-lg p-6 max-w-3xl mx-auto">
             <h3 className="text-xl font-semibold mb-4 text-center">Выбранные услуги</h3>
             
@@ -532,7 +587,7 @@ const List2 = ({
               </Button>
             </div>
           </div>
-        </div>
+        </Container>
       )}
       
       {/* Booking Modal */}

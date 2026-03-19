@@ -157,7 +157,7 @@ const TeamMemberCard = ({ member }: { member: typeof teamMembers[0] }) => {
 
 const Team01Page = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-14 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-center py-14">
       <div className="text-center max-w-xl mx-auto">
         <h2 className="mt-4 text-4xl sm:text-5xl font-semibold tracking-tighter">
           Наши специалисты
@@ -167,7 +167,7 @@ const Team01Page = () => {
         </p>
       </div>
 
-      <div className="mt-20 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-(--breakpoint-lg) mx-auto">
+      <div className="mt-20 grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         {teamMembers.map((member) => (
           <TeamMemberCard key={member.name} member={member} />
         ))}

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Container } from "@/components/misc/layout/сontainer";
 import { cn } from "@/lib/utils";
 
 const testimonials = [
@@ -69,15 +70,15 @@ interface Testimonial19Props {
 const Testimonial19 = ({ className }: Testimonial19Props) => {
   return (
     <section id="testimonials" className={cn("py-16 md:py-32", className)}>
-      <div className="container flex flex-col items-center gap-4 px-4">
+      <Container className="w-full">
+        <div className="flex flex-col items-center gap-4">
         <h2 className="text-center text-3xl font-semibold lg:text-4xl max-w-3xl mx-auto">
           Отзывы наших счастливых клиентов
         </h2>
         <p className="text-center text-muted-foreground lg:text-lg max-w-2xl mx-auto">
           Присоединяйтесь к нашим довольным посетителям
         </p>
-      </div>
-      <div className="lg:container">
+        </div>
         <div className="mt-16 space-y-4">
           <Carousel
             opts={{
@@ -119,14 +120,14 @@ const Testimonial19 = ({ className }: Testimonial19Props) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="left-2 z-20 md:left-4" />
+            <CarouselNext className="right-2 z-20 md:right-4" />
           </Carousel>
         </div>
-      </div>
 
       {/* Форма для добавления отзыва */}
       <ReviewForm />
+      </Container>
     </section>
   );
 };
@@ -171,7 +172,7 @@ const ReviewForm = () => {
   };
 
   return (
-    <div className="mt-12 max-w-2xl mx-auto px-4">
+    <div className="mx-auto mt-12 w-full max-w-2xl">
       <form onSubmit={handleSubmit} className="space-y-3 bg-background rounded-xl p-4 md:p-6 border">
         <div>
           <Input

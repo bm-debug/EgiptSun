@@ -103,12 +103,12 @@ const About00 = ({ className, hero, mission, values, team, imageAlts }: About00P
       <section className="relative py-10 md:py-12 lg:py-15">
         <Container className="max-w-5xl">
         <div className="text-center">
-          <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.12)' }}>
             {hero?.title ?? "Солнце Египта"}
             {hero?.subtitle ? (
               <>
                 <br />
-                <span className="text-xl md:text-2xl font-normal text-muted-foreground">
+                <span className="text-xl md:text-2xl font-normal text-muted-foreground whitespace-pre-line">
                   {hero.subtitle}
                 </span>
               </>

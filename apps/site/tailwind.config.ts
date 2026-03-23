@@ -81,6 +81,7 @@ export default {
       },
       screens: {
         xs: "375px",
+        xl2: "1200px",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],

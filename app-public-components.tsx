@@ -49,7 +49,7 @@ export const PUBLIC_PAGES_COMPONENTS: PubliPagesComponent = {
           hero={{
             badge: "О салоне",
             title: "Солнце Египта",
-            subtitle: "Откройте тайны древнего Египта в каждом прикосновении!",
+            subtitle: "Откройте тайны древнего Египта\nв каждом прикосновении!",
             description: ""
           }}
           mission={{

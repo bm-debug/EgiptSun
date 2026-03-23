@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Container } from "@/components/misc/layout/сontainer";
 
 const teamMembers = [
   {
@@ -60,14 +61,14 @@ const TeamMemberCard = ({ member }: { member: typeof teamMembers[0] }) => {
 
   if (member.isTopMaster) {
     return (
-      <div className="text-center group">
+      <div className="w-[280px] shrink-0 text-center group">
         <div className="relative overflow-hidden rounded-lg bg-secondary mb-4">
           <Image
             src={member.imageUrl}
             alt={member.name}
-            className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-            width={400}
-            height={480}
+            className="w-[280px] h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+            width={280}
+            height={320}
           />
         </div>
         <h3 
@@ -138,40 +139,71 @@ const TeamMemberCard = ({ member }: { member: typeof teamMembers[0] }) => {
   }
 
   return (
-    <div className="text-center group">
+    <div className="w-[280px] shrink-0 text-center group">
       <div className="relative overflow-hidden rounded-lg bg-secondary mb-4">
         <Image
           src={member.imageUrl}
           alt={member.name}
-          className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-          width={400}
-          height={480}
+          className="w-[280px] h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+          width={280}
+          height={320}
         />
       </div>
-      <h3 className="text-xl font-semibold">{member.name}</h3>
+      <h3
+        className="text-xl font-semibold cursor-pointer hover:text-[#BD8736] transition-colors"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {member.name}
+      </h3>
       <p className="text-muted-foreground text-sm mb-3">{member.title}</p>
-      <p className="text-sm text-muted-foreground leading-relaxed">{(member as any).description}</p>
+
+      {isExpanded && (
+        <div className="mt-4 p-4 bg-muted rounded-lg text-left animate-in fade-in slide-in-from-top-2 duration-300">
+          <p className="text-sm leading-relaxed">{(member as any).description}</p>
+        </div>
+      )}
+
+      <div className="mt-2 flex justify-center">
+        <ChevronDown
+          className={cn(
+            "w-5 h-5 text-muted-foreground transition-transform duration-300 cursor-pointer",
+            isExpanded && "rotate-180"
+          )}
+          onClick={() => setIsExpanded(!isExpanded)}
+        />
+      </div>
     </div>
   );
 };
 
 const Team01Page = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-14 px-4 sm:px-6 lg:px-8">
+    <div className="py-16">
+    <Container>
+      <div
+        className="w-full rounded-3xl px-6 py-14 flex flex-col items-center"
+        style={{
+          background: 'linear-gradient(135deg, rgba(189,135,54,0.07) 0%, rgba(189,135,54,0.03) 100%)',
+          boxShadow: '0 8px 40px rgba(189,135,54,0.10), 0 2px 8px rgba(0,0,0,0.06)',
+          border: '1px solid rgba(189,135,54,0.15)',
+        }}
+      >
       <div className="text-center max-w-xl mx-auto">
-        <h2 className="mt-4 text-4xl sm:text-5xl font-semibold tracking-tighter">
+        <h2 className="mt-4 text-4xl sm:text-5xl font-semibold tracking-tighter" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.12)' }}>
           Наши специалисты
         </h2>
         <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-          Профессионалы своего дела с многолетним опытом работы
+          Настоящие носители египетских традиций<br />с многолетним опытом
         </p>
       </div>
 
-      <div className="mt-20 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-(--breakpoint-lg) mx-auto">
+      <div className="mt-20 w-full grid grid-cols-1 min-[904px]:grid-cols-3 gap-8 max-w-screen-lg mx-auto place-items-center">
         {teamMembers.map((member) => (
           <TeamMemberCard key={member.name} member={member} />
         ))}
       </div>
+      </div>
+    </Container>
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { ArrowUp } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { usePublicContent } from "@/contexts/PublicContentContext";
-import { ChatTriggerButton, useChatOptional } from "@/packages/components/blocks-app/chat";
 
 const floatingBtnClass = "h-11 w-11 rounded-full shadow-lg border-0";
 
@@ -37,8 +36,7 @@ export function ScrollToTopFloating({ showToTop = true }: { showToTop?: boolean 
     >
       <Button
         size="icon"
-        variant="primary"
-        className={floatingBtnClass}
+        className={`${floatingBtnClass} bg-[#BD8736] hover:bg-[#BD8736]/90 text-white`}
         onClick={scrollToTop}
         aria-label="Scroll to top"
       >
@@ -48,17 +46,6 @@ export function ScrollToTopFloating({ showToTop = true }: { showToTop?: boolean 
   );
 }
 
-export function ChatFloating({ showChat = true }: { showChat?: boolean }) {
-  const { footer } = usePublicContent();
-  const hasChat = useChatOptional();
-  const fromContent = (footer as Record<string, unknown>)?.show_chat !== false;
-  const visible = showChat && fromContent && hasChat && !hasChat.isOpen;
-
-  if (!visible) return null;
-
-  return (
-    <div className="fixed bottom-6 right-6 z-9999 md:right-8">
-      <ChatTriggerButton variant="primary" size="icon" className={floatingBtnClass} />
-    </div>
-  );
+export function ChatFloating() {
+  return null;
 }

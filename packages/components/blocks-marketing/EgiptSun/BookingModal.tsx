@@ -27,11 +27,18 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
+  // Исключаем сертификаты и доставку из расчёта длительности
+  const bookableItems = cartItems.filter(
+    item =>
+      !item.title.toLowerCase().includes('сертификат') &&
+      !item.title.toLowerCase().includes('доставка')
+  );
+
   // Расчет общей длительности всех процедур в минутах
   const calculateTotalDuration = (): number => {
     let totalMinutes = 0;
     
-    cartItems.forEach(item => {
+    bookableItems.forEach(item => {
       // Извлекаем длительность из category (например, "90 минут", "2 часа", "2,5 часа")
       const durationMatch = item.category.match(/(\d+(?:,\d+)?)(\s*час(?:а|ов)?|\s*мин(?:ут)?)?/i);
       if (durationMatch) {
@@ -141,7 +148,6 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
 
   const handleBooking = () => {
     if (selectedDate && selectedTime) {
-      alert(`Запись подтверждена!\nДата: ${formatDate(selectedDate)}\nВремя: ${selectedTime}`);
       onClose();
     }
   };
@@ -177,7 +183,7 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
           </div>
 
           {/* Week Days Grid */}
-          <div className="grid grid-cols-7 gap-2 mb-6">
+          <div className="grid grid-cols-7 gap-1 mb-6">
             {weekDays.map((date, index) => {
               const isToday = new Date().toDateString() === date.toDateString();
               const isSelected = selectedDate?.toDateString() === date.toDateString();
@@ -189,7 +195,7 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
                   onClick={() => !isPast && handleDateSelect(date)}
                   disabled={isPast}
                   className={cn(
-                    "flex flex-col items-center justify-center p-3 rounded-lg border transition-all",
+                    "flex flex-col items-center justify-center p-1 xl2:p-3 rounded-lg border transition-all text-xs xl2:text-sm",
                     isSelected && "bg-primary text-primary-foreground border-primary",
                     isToday && !isSelected && "border-primary bg-primary/10",
                     isPast && "opacity-30 cursor-not-allowed bg-muted",
@@ -197,7 +203,7 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
                   )}
                 >
                   <span className="text-xs uppercase">{formatDayName(date)}</span>
-                  <span className="text-lg font-semibold">{date.getDate()}</span>
+                  <span className="text-base xl2:text-lg font-semibold">{date.getDate()}</span>
                 </button>
               );
             })}
@@ -210,7 +216,7 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
                 <Clock className="w-4 h-4" />
                 Доступное время на {formatDate(selectedDate)}:
               </h4>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-3 xl2:grid-cols-4 gap-2">
                 {generateTimeSlots().map((slot, index) => (
                   <button
                     key={index}
@@ -234,7 +240,7 @@ export const BookingModal = ({ isOpen, onClose, cartItems = [] }: BookingModalPr
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end gap-3 p-6 border-t">
+        <div className="flex flex-wrap justify-end gap-3 p-6 border-t">
           <Button variant="outline" onClick={onClose}>
             Отмена
           </Button>

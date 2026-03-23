@@ -70,7 +70,7 @@ const Testimonial19 = ({ className }: Testimonial19Props) => {
   return (
     <section id="testimonials" className={cn("py-16 md:py-32", className)}>
       <div className="container flex flex-col items-center gap-4 px-4">
-        <h2 className="text-center text-3xl font-semibold lg:text-4xl max-w-3xl mx-auto">
+        <h2 className="text-center text-3xl font-semibold lg:text-4xl max-w-3xl mx-auto" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.12)' }}>
           Отзывы наших счастливых клиентов
         </h2>
         <p className="text-center text-muted-foreground lg:text-lg max-w-2xl mx-auto">
@@ -134,6 +134,8 @@ const Testimonial19 = ({ className }: Testimonial19Props) => {
 const ReviewForm = () => {
   const [name, setName] = useState("");
   const [text, setText] = useState("");
+  const [rating, setRating] = useState(5);
+  const [hoverRating, setHoverRating] = useState(0);
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoPreviews, setPhotoPreviews] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -162,9 +164,10 @@ const ReviewForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Отзыв отправлен:', { name, text, photos });
+    console.log('Отзыв отправлен:', { name, text, rating, photos });
     setName("");
     setText("");
+    setRating(5);
     setPhotos([]);
     setPhotoPreviews([]);
     alert('Спасибо за ваш отзыв!');
@@ -173,6 +176,30 @@ const ReviewForm = () => {
   return (
     <div className="mt-12 max-w-2xl mx-auto px-4">
       <form onSubmit={handleSubmit} className="space-y-3 bg-background rounded-xl p-4 md:p-6 border">
+        
+        {/* Рейтинг звёздами */}
+        <div className="flex items-center gap-1 pb-1">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              type="button"
+              onClick={() => setRating(star)}
+              onMouseEnter={() => setHoverRating(star)}
+              onMouseLeave={() => setHoverRating(0)}
+              className="focus:outline-none transition-transform hover:scale-110"
+            >
+              <Star
+                className="w-7 h-7 transition-colors"
+                fill={(hoverRating || rating) >= star ? '#BD8736' : 'transparent'}
+                color={(hoverRating || rating) >= star ? '#BD8736' : '#9ca3af'}
+              />
+            </button>
+          ))}
+          <span className="ml-2 text-sm text-muted-foreground">
+            {hoverRating || rating} из 5
+          </span>
+        </div>
+
         <div>
           <Input
             type="text"

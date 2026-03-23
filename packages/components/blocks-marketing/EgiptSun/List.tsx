@@ -4,13 +4,14 @@ import {
   ArrowRight,
   Building2,
   Calendar,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   CreditCard,
   Gift,
   X,
 } from "lucide-react";
-import { SpaRelax, Aromatherapy, Stone, Face, Cupping, Flower } from "./icons";
+import { SpaRelax, Aromatherapy, Stone, Face, Cupping, Flower, Baby, FlowerLotus } from "./icons";
 import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { MASSAGE_DATA } from "./massage-data";
 import { BookingModal } from "./BookingModal";
+import { Container } from "@/components/misc/layout/сontainer";
 
 interface ListItem {
   icon: React.ReactNode;
@@ -50,7 +52,7 @@ const List2 = ({
   heading = "Наши услуги",
   items = [
     {
-      icon: <SpaRelax className="h-10 w-10" />,
+      icon: <Baby className="h-10 w-10" />,
       title: "Нефертити",
       category: "90 минут",
       description: "Ваш личный оазис релакса",
@@ -77,7 +79,7 @@ const List2 = ({
       basePrice: 7500,
     },
     {
-      icon: <Flower className="h-10 w-10" />,
+      icon: <FlowerLotus className="h-10 w-10" />,
       title: "Бастет-леди",
       category: "3 часа",
       description: "Роскошь древнего Египта для современной леди",
@@ -99,6 +101,7 @@ const List2 = ({
   // Gift certificate form states
   const [certificateType, setCertificateType] = useState<'online' | 'paper'>('online');
   const [certificateValue, setCertificateValue] = useState<'amount' | 'service'>('amount');
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [giftAmount, setGiftAmount] = useState<string>('');
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number>(0);
   const [email, setEmail] = useState<string>('');
@@ -108,7 +111,6 @@ const List2 = ({
   const [address, setAddress] = useState<string>('');
 
   const addToCart = (title: string, category: string, sessions: number | undefined, price: number) => {
-    console.log('Adding to cart:', { title, category, sessions, price });
     setCartItems(prev => [...prev, { title, category, sessions, price }]);
   };
 
@@ -161,7 +163,6 @@ const List2 = ({
         category = `${formatPrice(amount)}`;
         price = amount;
       } else {
-        alert('Минимальная сумма сертификата - 3000₽');
         return;
       }
     } else {
@@ -177,6 +178,9 @@ const List2 = ({
       : `Бумажный • ${deliveryMethod === 'pickup' ? 'Самовывоз' : 'Доставка курьером'}`;
 
     addToCart(certificateTitle, `${category} • ${additionalInfo}`, undefined, price);
+    if (certificateType === 'paper' && deliveryMethod === 'courier') {
+      addToCart('Доставка курьером', 'Доставка сертификата', undefined, 800);
+    }
     setIsGiftCertificateModalOpen(false);
     
     // Сброс формы
@@ -189,13 +193,21 @@ const List2 = ({
   };
   return (
     <section id={id} className={cn("py-32", className)}>
-      <div className="container px-4 md:px-8">
-        <h1 className="mb-10 text-center text-3xl font-semibold md:mb-14 md:text-4xl">
+      <Container>
+        <h1 className="mb-10 text-center text-3xl font-semibold md:mb-14 md:text-4xl" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.12)' }}>
           {heading}
         </h1>
         
         {/* SPA Programs Section */}
-        <h2 className="mb-6 text-center text-2xl font-medium text-muted-foreground">
+        <div
+          className="w-full rounded-3xl px-6 py-8 mb-8"
+          style={{
+            background: 'linear-gradient(135deg, rgba(189,135,54,0.07) 0%, rgba(189,135,54,0.03) 100%)',
+            boxShadow: '0 8px 40px rgba(189,135,54,0.10), 0 2px 8px rgba(0,0,0,0.06)',
+            border: '1px solid rgba(189,135,54,0.15)',
+          }}
+        >
+        <h2 className="mb-6 text-center text-2xl font-medium text-[#BD8736]">
           SPA - программы
         </h2>
         
@@ -204,7 +216,6 @@ const List2 = ({
           {items.slice(0, 4).map((item, index) => (
             <React.Fragment key={index}>
               <div className="grid items-start gap-4 px-4 py-5 md:grid-cols-4">
-                {/* Иконка с названием - на мобильном сверху */}
                 <div className="flex items-center gap-2 md:order-none">
                   <span className="flex h-14 w-16 shrink-0 items-center justify-center rounded-md bg-muted">
                     {item.icon}
@@ -217,16 +228,19 @@ const List2 = ({
                   </div>
                 </div>
                 
-                {/* Описание - на всю ширину на мобильном, вниз */}
                 <div className="md:col-span-2">
                   {item.fullDescription ? (
                     <button
                       onClick={() => setExpandedItem(expandedItem === index ? null : index)}
-                      className="text-left hover:text-[#BD8736] transition-colors cursor-pointer w-full"
+                      className="group flex flex-col items-center w-full cursor-pointer"
                     >
-                      <p className="text-lg md:text-2xl font-semibold text-center max-w-2xl mx-auto">
+                      <p className="text-lg md:text-2xl font-semibold text-center max-w-2xl mx-auto group-hover:text-[#BD8736] transition-colors">
                         {item.description}
                       </p>
+                      <span className="mt-1 flex items-center gap-1 text-xs text-muted-foreground group-hover:text-[#BD8736] transition-colors">
+                        {expandedItem === index ? 'Скрыть' : 'Подробнее'}
+                        <ChevronDown className={cn('w-3 h-3 transition-transform duration-300', expandedItem === index && 'rotate-180')} />
+                      </span>
                     </button>
                   ) : (
                     <p className="text-lg md:text-2xl font-semibold text-center max-w-2xl mx-auto">
@@ -242,7 +256,6 @@ const List2 = ({
                   )}
                 </div>
                 
-                {/* Цена и кнопка - справа на мобильном */}
                 <div className="flex items-center justify-end gap-2 md:order-none md:ml-auto">
                   {item.basePrice ? (
                     <>
@@ -261,55 +274,6 @@ const List2 = ({
                         <span>Добавить</span>
                       </Button>
                     </>
-                  ) : item.sessionOptions ? (
-                    <>
-                      {console.log('Massage:', item.title, 'sessionOptions:', item.sessionOptions, 'selectedSessions[', index, ']:', selectedSessions[index])}
-                      <select
-                        value={selectedSessions[index] || 1}
-                        onChange={(e) => {
-                          const newValue = Number(e.target.value);
-                          alert(`CHANGE: index=${index}, sessions=${newValue}`);
-                          setSelectedSessions({...selectedSessions, [index]: newValue});
-                        }}
-                        className="px-2 py-2 border rounded-md text-sm bg-background whitespace-nowrap"
-                      >
-                        {item.sessionOptions.map((option) => (
-                          <option key={option.sessions} value={option.sessions}>
-                            {option.sessions} сеанс{option.sessions === 1 ? '' : option.sessions < 5 ? 'а' : 'ов'}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="text-xs text-blue-500 mb-1">DEBUG: {item.title} = {selectedSessions[item.title] || 1}</div>
-                      <div className="flex flex-col items-end gap-1">
-                        {(() => {
-                          const sessionsCount = selectedSessions[item.title] || 1;
-                          if (sessionsCount > 1) {
-                            return (
-                              <span className="text-sm line-through text-muted-foreground whitespace-nowrap">
-                                {formatPrice(item.sessionOptions[0].price * sessionsCount)}
-                              </span>
-                            );
-                          }
-                          return null;
-                        })()}
-                        <span className="font-semibold whitespace-nowrap">
-                          {formatPrice(item.sessionOptions.find(opt => opt.sessions === (selectedSessions[item.title] || 1))?.price || item.sessionOptions[0]?.price)}
-                        </span>
-                      </div>
-                      <Button 
-                        variant="outline"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          const sessions = selectedSessions[item.title] || 1;
-                          const price = item.sessionOptions?.find(opt => opt.sessions === sessions)?.price || 0;
-                          addToCart(item.title, item.category, sessions, price);
-                        }}
-                        size="sm"
-                      >
-                        <span>Добавить</span>
-                      </Button>
-                    </>
                   ) : null}
                 </div>
               </div>
@@ -317,9 +281,18 @@ const List2 = ({
             </React.Fragment>
           ))}
         </div>
+        </div>
         
         {/* Massage Section */}
-        <h2 className="mt-12 mb-6 text-center text-2xl font-medium text-muted-foreground">
+        <div
+          className="w-full rounded-3xl px-6 py-8"
+          style={{
+            background: 'linear-gradient(135deg, rgba(189,135,54,0.07) 0%, rgba(189,135,54,0.03) 100%)',
+            boxShadow: '0 8px 40px rgba(189,135,54,0.10), 0 2px 8px rgba(0,0,0,0.06)',
+            border: '1px solid rgba(189,135,54,0.15)',
+          }}
+        >
+        <h2 className="mt-4 mb-6 text-center text-2xl font-medium text-[#BD8736]">
           Массажи
         </h2>
         
@@ -328,7 +301,6 @@ const List2 = ({
           {items.slice(4).map((item, index) => (
             <React.Fragment key={index + 4}>
               <div className="grid items-start gap-4 px-4 py-5 md:grid-cols-4">
-                {/* Иконка с названием - на мобильном сверху */}
                 <div className="flex items-center gap-2 md:order-none">
                   <span className="flex h-14 w-16 shrink-0 items-center justify-center rounded-md bg-muted">
                     {item.icon}
@@ -341,16 +313,19 @@ const List2 = ({
                   </div>
                 </div>
                 
-                {/* Описание - на всю ширину на мобильном, вниз */}
                 <div className="md:col-span-2">
                   {item.fullDescription ? (
                     <button
                       onClick={() => setExpandedItem(expandedItem === index + 4 ? null : index + 4)}
-                      className="text-left hover:text-[#BD8736] transition-colors cursor-pointer w-full"
+                      className="group flex flex-col items-center w-full cursor-pointer"
                     >
-                      <p className="text-lg md:text-2xl font-semibold text-center max-w-2xl mx-auto">
+                      <p className="text-lg md:text-2xl font-semibold text-center max-w-2xl mx-auto group-hover:text-[#BD8736] transition-colors">
                         {item.description}
                       </p>
+                      <span className="mt-1 flex items-center gap-1 text-xs text-muted-foreground group-hover:text-[#BD8736] transition-colors">
+                        {expandedItem === index + 4 ? 'Скрыть' : 'Подробнее'}
+                        <ChevronDown className={cn('w-3 h-3 transition-transform duration-300', expandedItem === index + 4 && 'rotate-180')} />
+                      </span>
                     </button>
                   ) : (
                     <p className="text-lg md:text-2xl font-semibold text-center max-w-2xl mx-auto">
@@ -366,26 +341,8 @@ const List2 = ({
                   )}
                 </div>
                 
-                {/* Цена и кнопка - справа на мобильном */}
                 <div className="flex items-center justify-end gap-2 md:order-none md:ml-auto">
-                  {item.basePrice ? (
-                    <>
-                      <span className="font-semibold whitespace-nowrap">
-                        {formatPrice(item.basePrice)}
-                      </span>
-                      <Button 
-                        variant="outline" 
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          addToCart(item.title, item.category, undefined, item.basePrice || 0);
-                        }}
-                        size="sm"
-                      >
-                        <span>Добавить</span>
-                      </Button>
-                    </>
-                  ) : item.sessionOptions ? (
+                  {item.sessionOptions ? (
                     <>
                       <select
                         value={selectedSessions[item.title] || 1}
@@ -427,7 +384,7 @@ const List2 = ({
           {/* Gift Certificate - визуально отделен от остальных массажей */}
           <div className="my-6" />
           <div className="grid items-center gap-4 px-4 py-5 md:grid-cols-4">
-            <div className="order-2 flex items-center gap-2 md:order-none">
+            <div className="flex items-center gap-2 md:order-none">
               <span className="flex h-14 w-16 shrink-0 items-center justify-center rounded-md bg-muted">
                 <Gift className="h-6 w-6" />
               </span>
@@ -438,12 +395,12 @@ const List2 = ({
                 </p>
               </div>
             </div>
-            <div className="order-1 md:order-none md:col-span-2 flex items-center justify-center">
-              <p className="text-2xl font-semibold text-center">
+            <div className="md:col-span-2 flex items-center justify-center">
+              <p className="text-lg md:text-2xl font-semibold text-center">
                 Подарите эмоции и заботу
               </p>
             </div>
-            <div className="order-3 ml-auto w-fit gap-2 md:order-none flex items-center">
+            <div className="ml-auto w-fit gap-2 md:order-none flex items-center">
               <Button 
                 variant="outline"
                 onClick={handleGiftCertificateClick}
@@ -454,11 +411,12 @@ const List2 = ({
           </div>
           <Separator />
         </div>
-      </div>
+        </div>
+      </Container>
       
       {/* Cart Summary Section */}
       {cartItems.length > 0 && (
-        <div className="container px-4 md:px-8 mt-12">
+        <Container className="mt-12">
           <div className="bg-muted rounded-lg p-6 max-w-3xl mx-auto">
             <h3 className="text-xl font-semibold mb-4 text-center">Выбранные услуги</h3>
             
@@ -523,8 +481,7 @@ const List2 = ({
                 className="w-full bg-[#BD8736] hover:bg-[#BD8736]/90" 
                 size="lg"
                 onClick={() => {
-                  console.log('Proceeding to payment:', { items: cartItems, total: totalPrice });
-                  alert('Переход к оплате...\nСумма: ' + formatPrice(totalPrice));
+                  // TODO: integrate payment gateway
                 }}
               >
                 <CreditCard className="w-5 h-5 mr-2" />
@@ -532,7 +489,7 @@ const List2 = ({
               </Button>
             </div>
           </div>
-        </div>
+        </Container>
       )}
       
       {/* Booking Modal */}
@@ -542,6 +499,27 @@ const List2 = ({
           onClose={() => setIsBookingModalOpen(false)}
           cartItems={cartItems}
         />
+      )}
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out"
+          onClick={() => setLightboxImage(null)}
+        >
+          <img
+            src={lightboxImage}
+            alt="Предпросмотр сертификата"
+            className="max-h-[70vh] max-w-[90vw] rounded-lg shadow-2xl object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors bg-black/40 rounded-full p-1"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
       )}
 
       {/* Gift Certificate Modal */}
@@ -570,20 +548,46 @@ const List2 = ({
                     <RadioGroupItem value="online" id="online" className="peer sr-only" />
                     <Label
                       htmlFor="online"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer"
+                      className="flex flex-row items-center gap-3 rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer h-24"
                     >
-                      <span className="text-lg font-semibold">Онлайн</span>
-                      <span className="text-sm text-muted-foreground mt-1">На email</span>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.preventDefault(); setLightboxImage('/images/ESun_online.jpg'); }}
+                        className="flex-shrink-0 focus:outline-none"
+                      >
+                        <img
+                          src="/images/ESun_online.jpg"
+                          alt="Онлайн сертификат"
+                          className="w-10 h-14 object-cover rounded shadow hover:opacity-80 transition-opacity"
+                        />
+                      </button>
+                      <div className="flex flex-col">
+                        <span className="text-base font-semibold leading-tight">Онлайн</span>
+                        <span className="text-xs text-muted-foreground mt-1 leading-tight">Выслать на email</span>
+                      </div>
                     </Label>
                   </div>
                   <div>
                     <RadioGroupItem value="paper" id="paper" className="peer sr-only" />
                     <Label
                       htmlFor="paper"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer"
+                      className="flex flex-row items-center gap-3 rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer h-24"
                     >
-                      <span className="text-lg font-semibold">Бумажный</span>
-                      <span className="text-sm text-muted-foreground mt-1">В салоне или доставка</span>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.preventDefault(); setLightboxImage('/images/ESun_paper.jpg'); }}
+                        className="flex-shrink-0 focus:outline-none"
+                      >
+                        <img
+                          src="/images/ESun_paper.jpg"
+                          alt="Бумажный сертификат"
+                          className="w-10 h-14 object-cover rounded shadow hover:opacity-80 transition-opacity"
+                        />
+                      </button>
+                      <div className="flex flex-col">
+                        <span className="text-base font-semibold leading-tight">Бумажный</span>
+                        <span className="text-xs text-muted-foreground mt-1 leading-tight">Получить на руки</span>
+                      </div>
                     </Label>
                   </div>
                 </RadioGroup>
@@ -601,20 +605,20 @@ const List2 = ({
                     <RadioGroupItem value="amount" id="amount" className="peer sr-only" />
                     <Label
                       htmlFor="amount"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer"
+                      className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer h-24"
                     >
-                      <span className="text-lg font-semibold">На сумму</span>
-                      <span className="text-sm text-muted-foreground mt-1">От 3000₽</span>
+                      <span className="text-base font-semibold">На сумму</span>
+                      <span className="text-xs text-muted-foreground mt-1">От 3000₽</span>
                     </Label>
                   </div>
                   <div>
                     <RadioGroupItem value="service" id="service" className="peer sr-only" />
                     <Label
                       htmlFor="service"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer"
+                      className="flex flex-col items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#BD8736] peer-data-[state=checked]:bg-[#BD8736]/10 [&:has([data-state=checked])]:border-[#BD8736] [&:has([data-state=checked])]:bg-[#BD8736]/10 cursor-pointer h-24"
                     >
-                      <span className="text-lg font-semibold">На услугу</span>
-                      <span className="text-sm text-muted-foreground mt-1">Выбрать из списка</span>
+                      <span className="text-base font-semibold">На услугу</span>
+                      <span className="text-xs text-muted-foreground mt-1">Выбрать из списка</span>
                     </Label>
                   </div>
                 </RadioGroup>
@@ -704,7 +708,7 @@ const List2 = ({
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="courier" id="courier" className="text-[#BD8736] border-[#BD8736]" />
-                        <Label htmlFor="courier" className="cursor-pointer">Доставка курьером</Label>
+                        <Label htmlFor="courier" className="cursor-pointer">Доставить курьером (800 руб.)</Label>
                       </div>
                     </RadioGroup>
                   </div>

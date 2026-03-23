@@ -98,7 +98,7 @@ const About00 = ({ className, hero, mission, values, team, imageAlts }: About00P
   ];
 
   return (
-    <section className={cn("py-32", className)}>
+    <Container className={cn("py-32 px-0!", className)}>
       {/* Hero Section */}
       <section className="relative py-10 md:py-12 lg:py-15">
         <Container className="max-w-5xl">
@@ -129,9 +129,8 @@ const About00 = ({ className, hero, mission, values, team, imageAlts }: About00P
       </section>
 
       {/* Accordion Sections */}
-      <section className="py-10 md:py-12 lg:py-15">
-        <Container className="max-w-5xl">
-        <div className="space-y-4">
+      <section className="py-10 md:py-12 lg:py-15 mx-0">
+        <div className="w-full space-y-4">
           {sections.map((section) => (
             <div key={section.id} className="border rounded-lg overflow-hidden">
               <button
@@ -158,12 +157,11 @@ const About00 = ({ className, hero, mission, values, team, imageAlts }: About00P
             </div>
           ))}
         </div>
-        </Container>
       </section>
 
       {/* Image Grid Section */}
-      <section className="my-5 overflow-x-hidden pb-10 md:my-8 md:pb-12 lg:my-12 lg:pb-15">
-        <Container className="max-w-5xl">
+      <section className="my-5 w-full overflow-x-hidden pb-10 md:my-8 md:pb-12 lg:my-12 lg:pb-15 mx-0 px-0">
+        <div className="w-full">
           <Carousel opts={{ align: "start" }}>
             <CarouselContent>
               <CarouselItem className="basis-full md:basis-1/2 lg:basis-1/3">
@@ -195,9 +193,9 @@ const About00 = ({ className, hero, mission, values, team, imageAlts }: About00P
               </CarouselItem>
             </CarouselContent>
           </Carousel>
-        </Container>
+        </div>
       </section>
-    </section>
+    </Container>
   );
 };
 
